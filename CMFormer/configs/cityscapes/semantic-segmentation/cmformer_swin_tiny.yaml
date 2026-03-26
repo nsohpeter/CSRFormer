@@ -1,0 +1,42 @@
+_BASE_: maskformer2_R50_bs16_90k.yaml
+
+MODEL:
+  BACKBONE:
+    NAME: "D2SwinTransformer"
+  SWIN:
+    EMBED_DIM: 96
+    DEPTHS: [2, 2, 6, 2]
+    NUM_HEADS: [3, 6, 12, 24]
+    WINDOW_SIZE: 7
+    APE: False
+    DROP_PATH_RATE: 0.3
+    PATCH_NORM: True
+  # Use your existing pretrained weights
+  WEIGHTS: "pretrained_weights/swin_tiny_patch4_window7_224.pkl"
+  PIXEL_MEAN: [123.675, 116.280, 103.530]
+  PIXEL_STD: [58.395, 57.120, 57.375]
+
+# Adjusted for single RTX 3090
+SOLVER:
+  IMS_PER_BATCH: 8  # Reduced from 16
+  BASE_LR: 0.00005  # Scale LR: 0.0001 * (8/16)
+  MAX_ITER: 90000
+  WARMUP_ITERS: 1000
+  STEPS: (60000, 80000)
+  GAMMA: 0.1
+  WEIGHT_DECAY: 0.05
+  
+  # Gradient clipping (important for Swin)
+  CLIP_GRADIENTS:
+    ENABLED: True
+    CLIP_TYPE: "full_model"
+    CLIP_VALUE: 0.01
+    NORM_TYPE: 2.0
+
+OUTPUT_DIR: "./output/cmformer_swin_tiny_90k"
+
+TEST:
+  EVAL_PERIOD: 5000
+
+DATALOADER:
+  NUM_WORKERS: 4

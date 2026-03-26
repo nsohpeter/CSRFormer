@@ -1,0 +1,5 @@
+Dataset,Type,mIoU (%),Domain Gap (%),Notes
+Cityscapes,Source (in-domain),74.05,0.0,Official evaluator; bs=4 vs official bs=16
+BDD100K,Zero-shot target,36.50,-37.55,Real-world domain shift
+GTA5,Zero-shot synthetic,32.87,-41.18,Synthetic-to-real gap
+Mapillary,Excluded,N/A,N/A,Class mismatch (65 vs 19 classes)

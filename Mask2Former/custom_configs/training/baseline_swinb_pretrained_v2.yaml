@@ -1,0 +1,33 @@
+_BASE_: ../../configs/cityscapes/semantic-segmentation/swin/maskformer2_swin_base_IN21k_384_bs16_90k.yaml
+
+MODEL:
+  WEIGHTS: "../pretrained_weights/swin_base_patch4_window12_384_22k.pth"
+  BACKBONE:
+    NAME: "D2SwinTransformer"
+  SWIN:
+    EMBED_DIM: 128
+    DEPTHS: [2, 2, 18, 2]
+    NUM_HEADS: [4, 8, 16, 32]
+    WINDOW_SIZE: 12
+    APE: False
+    DROP_PATH_RATE: 0.3
+    PATCH_NORM: True
+    PRETRAIN_IMG_SIZE: 384
+
+SOLVER:
+  IMS_PER_BATCH: 4
+  BASE_LR: 0.0001  # Correct LR!
+  STEPS: (60000, 80000)
+  MAX_ITER: 90000
+  WARMUP_ITERS: 1500
+  WARMUP_FACTOR: 0.001
+  CHECKPOINT_PERIOD: 5000
+
+OUTPUT_DIR: "./experiments/training_outputs/baseline_pretrained_v2"
+
+DATALOADER:
+  NUM_WORKERS: 4
+
+DATASETS:
+  TRAIN: ("cityscapes_fine_sem_seg_train",)
+  TEST: ("cityscapes_fine_sem_seg_val",)

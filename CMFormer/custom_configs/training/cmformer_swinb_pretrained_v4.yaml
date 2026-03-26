@@ -1,0 +1,33 @@
+_BASE_: ../../configs/cityscapes/semantic-segmentation/swin/maskformer2_swin_base_IN21k_384_bs16_90k.yaml
+
+MODEL:
+  WEIGHTS: "../pretrained_weights/swin_base_patch4_window12_384_22k.pth"
+
+
+SOLVER:
+  IMS_PER_BATCH: 4
+  BASE_LR: 0.0001  # Linear scaling: 0.0001 * (4/16)
+  MAX_ITER: 90000
+  WARMUP_FACTOR: 1.0
+  WARMUP_ITERS: 0
+  WEIGHT_DECAY: 0.05
+  OPTIMIZER: "ADAMW"
+  LR_SCHEDULER_NAME: "WarmupPolyLR"  # ← Polynomial decay (their approach)
+  BACKBONE_MULTIPLIER: 0.1  # ← Backbone learns 10x slower
+  CLIP_GRADIENTS:
+    ENABLED: True
+    CLIP_TYPE: "full_model"
+    CLIP_VALUE: 0.01
+    NORM_TYPE: 2.0
+  AMP:
+    ENABLED: True
+  CHECKPOINT_PERIOD: 5000
+
+OUTPUT_DIR: "./experiments/training_outputs/cmformer_pretrained_v4"
+
+DATALOADER:
+  NUM_WORKERS: 4
+
+DATASETS:
+  TRAIN: ("cityscapes_fine_sem_seg_train",)
+  TEST: ("cityscapes_fine_sem_seg_val",)

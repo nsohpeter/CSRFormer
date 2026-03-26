@@ -1,0 +1,44 @@
+# Large data — never push these
+datasets/
+pretrained_weights/
+*.pth
+*.pkl
+*.pt
+
+# Compiled detectron2 (rebuilt from source)
+detectron2/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+
+# Experiment outputs
+output/
+outputs/
+wandb/
+*.log
+
+# VS Code / OS
+.vscode/
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Training outputs
+experiments/training_outputs/
+*/experiments/training_outputs/
+
+# TensorBoard & process files
+events.out.tfevents.*
+*.pid
+training_resume.pid
+
+# Compiled ops
+*/ops/build/
+*/ops/dist/
+*.so
+*.egg

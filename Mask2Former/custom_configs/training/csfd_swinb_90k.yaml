@@ -1,0 +1,49 @@
+_BASE_: "../../configs/cityscapes/semantic-segmentation/swin/maskformer2_swin_base_IN21k_384_bs16_90k.yaml"
+ 
+MODEL:
+  BACKBONE:
+    FREEZE_AT: 0
+  WEIGHTS: "pretrained_weights/swin_base_patch4_window12_384_22k.pkl"
+  SWIN:
+    PRETRAIN_IMG_SIZE: 384
+    WINDOW_SIZE: 12
+    EMBED_DIM: 128
+    DEPTHS: [2, 2, 18, 2]
+    NUM_HEADS: [4, 8, 16, 32]
+  MASK_FORMER:
+    DEC_LAYERS: 10
+  CSFD:
+    ENABLED: True
+    KERNEL_SIZE: 7
+    INIT_SIGMA: 2.0
+    REDUCTION: 4
+ 
+SOLVER:
+  IMS_PER_BATCH: 4
+  BASE_LR: 0.0001
+  WEIGHT_DECAY: 0.05
+  MAX_ITER: 90000
+  LR_SCHEDULER_NAME: "WarmupPolyLR"
+  WARMUP_FACTOR: 1.0
+  WARMUP_ITERS: 0
+  POLY_LR_POWER: 0.9
+  POLY_LR_CONSTANT_ENDING: 0.0
+ 
+INPUT:
+  MIN_SIZE_TRAIN: !!python/object/apply:eval ["[int(x * 0.1 * 1024) for x in range(5, 21)]"]
+  MIN_SIZE_TRAIN_SAMPLING: "choice"
+  MIN_SIZE_TEST: 1024
+  MAX_SIZE_TRAIN: 4096
+  MAX_SIZE_TEST: 2048
+  CROP:
+    ENABLED: True
+    TYPE: "absolute"
+    SIZE: (512, 1024)
+    SINGLE_CATEGORY_MAX_AREA: 1.0
+  COLOR_AUG_SSD: True
+  FORMAT: "RGB"
+ 
+DATALOADER:
+  NUM_WORKERS: 4
+ 
+OUTPUT_DIR: "experiments/training_outputs/csfd_swinb_90k"

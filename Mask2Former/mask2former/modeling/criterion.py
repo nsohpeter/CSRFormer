@@ -95,7 +95,21 @@ class SetCriterion(nn.Module):
     """
 
     def __init__(self, num_classes, matcher, weight_dict, eos_coef, losses,
-                 num_points, oversample_ratio, importance_sample_ratio):
+                 num_points, oversample_ratio, importance_sample_ratio,
+                 # LOGIT-ADJUSTMENT: [NEW] class frequencies (prior) for
+                 # logit-adjusted CE (Menon et al., "Long-tail learning via
+                 # logit adjustment," ICLR 2021). Targets the recognition-
+                 # limited BDD gap diagnosed via the recognition-vs-grouping
+                 # oracle decomposition (majority-bias collapse: wall→building,
+                 # truck→car, bus→truck/car) — a classification-level fix,
+                 # distinct from every CSFD feature-space variant tried so far
+                 # (all of which failed/regressed on BDD).
+                 # class_frequencies: length-num_classes tensor/list of source
+                 # (Cityscapes) per-class pixel counts or frequencies. None
+                 # disables logit adjustment entirely (backward-compatible
+                 # default — existing configs behave identically).
+                 class_frequencies=None,
+                 logit_adjust_tau=1.0):
         """Create the criterion.
         Parameters:
             num_classes: number of object categories, omitting the special no-object category
@@ -103,6 +117,11 @@ class SetCriterion(nn.Module):
             weight_dict: dict containing as key the names of the losses and as values their relative weight.
             eos_coef: relative classification weight applied to the no-object category
             losses: list of all the losses to be applied. See get_loss for list of available losses.
+            class_frequencies: optional length-num_classes source-domain class
+                frequencies for logit adjustment. None disables the adjustment.
+            logit_adjust_tau: temperature scaling the log-prior bias added to
+                logits before CE (Menon et al. default: 1.0). Only used when
+                class_frequencies is not None.
         """
         super().__init__()
         self.num_classes = num_classes
@@ -119,6 +138,34 @@ class SetCriterion(nn.Module):
         self.oversample_ratio = oversample_ratio
         self.importance_sample_ratio = importance_sample_ratio
 
+        # LOGIT-ADJUSTMENT: [NEW] precompute the log-prior bias vector, one
+        # entry per class plus the no-object class. The no-object entry is
+        # always 0 -- no-object doesn't have a meaningful "class frequency"
+        # in the same sense as a semantic class, and eos_coef already
+        # separately controls its weighting, so we don't conflate the two
+        # imbalance-handling mechanisms.
+        self.logit_adjust_tau = logit_adjust_tau
+        if class_frequencies is not None:
+            freq = torch.as_tensor(class_frequencies, dtype=torch.float32)
+            assert freq.numel() == self.num_classes, (
+                f"class_frequencies must have {self.num_classes} entries, got {freq.numel()}"
+            )
+            # Normalize to a probability distribution over classes, then take
+            # log. Clamp before log to avoid -inf for any zero-frequency class
+            # (shouldn't happen with real Cityscapes counts, but safe regardless).
+            prior = freq / freq.sum()
+            log_prior = torch.log(torch.clamp(prior, min=1e-12))
+            # Append a 0 for the no-object class (see note above)
+            log_prior_full = torch.cat([log_prior, torch.zeros(1)])
+            self.register_buffer("logit_adjust_bias", log_prior_full)
+            self.logit_adjust_enabled = True
+        else:
+            # Backward-compatible no-op: register a zero buffer so the
+            # forward-path code below is unconditional (no branching needed
+            # at loss-compute time), but it adds exactly nothing.
+            self.register_buffer("logit_adjust_bias", torch.zeros(self.num_classes + 1))
+            self.logit_adjust_enabled = False
+
     def loss_labels(self, outputs, targets, indices, num_masks):
         """Classification loss (NLL)
         targets dicts must contain the key "labels" containing a tensor of dim [nb_target_boxes]
@@ -133,7 +180,15 @@ class SetCriterion(nn.Module):
         )
         target_classes[idx] = target_classes_o
 
-        loss_ce = F.cross_entropy(src_logits.transpose(1, 2), target_classes, self.empty_weight)
+        # LOGIT-ADJUSTMENT: [NEW] add tau * log(prior_c) to the logits before
+        # CE, only at train time (this is loss_labels, never called at
+        # inference -- MaskFormer.semantic_inference operates directly on
+        # outputs["pred_logits"], which this function never mutates in
+        # place, so inference is completely unaffected). This is a strict
+        # no-op when logit_adjust_enabled is False (bias is all zeros).
+        adjusted_logits = src_logits + self.logit_adjust_tau * self.logit_adjust_bias
+
+        loss_ce = F.cross_entropy(adjusted_logits.transpose(1, 2), target_classes, self.empty_weight)
         losses = {"loss_ce": loss_ce}
         return losses
     
@@ -257,6 +312,10 @@ class SetCriterion(nn.Module):
             "num_points: {}".format(self.num_points),
             "oversample_ratio: {}".format(self.oversample_ratio),
             "importance_sample_ratio: {}".format(self.importance_sample_ratio),
+            # LOGIT-ADJUSTMENT: [NEW] surface adjustment status in repr for
+            # quick sanity-checking in logs (e.g. print(criterion) at startup)
+            "logit_adjust_enabled: {}".format(self.logit_adjust_enabled),
+            "logit_adjust_tau: {}".format(self.logit_adjust_tau),
         ]
         _repr_indent = 4
         lines = [head] + [" " * _repr_indent + line for line in body]

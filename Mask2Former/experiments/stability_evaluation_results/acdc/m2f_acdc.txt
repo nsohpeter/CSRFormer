@@ -1,0 +1,11 @@
+=== M2F Baseline — fog ===
+[07/20 22:19:17 d2.evaluation.testing]: copypaste: 74.8529,92.1739,88.0740,95.6556
+
+=== M2F Baseline — night ===
+[07/20 22:20:44 d2.evaluation.testing]: copypaste: 39.6628,50.6340,56.8634,68.9509
+
+=== M2F Baseline — rain ===
+[07/20 22:22:13 d2.evaluation.testing]: copypaste: 67.0066,89.5701,83.5285,93.8745
+
+=== M2F Baseline — snow ===
+[07/20 22:23:39 d2.evaluation.testing]: copypaste: 62.7728,83.4319,73.7140,90.4563

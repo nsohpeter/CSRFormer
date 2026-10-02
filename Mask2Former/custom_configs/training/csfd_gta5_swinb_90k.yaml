@@ -1,0 +1,55 @@
+_BASE_: ../../configs/cityscapes/semantic-segmentation/swin/maskformer2_swin_base_IN21k_384_bs16_90k.yaml
+ 
+MODEL:
+  WEIGHTS: "pretrained_weights/swin_base_patch4_window12_384_22k.pkl"
+  CSFD:
+    ENABLED: True
+    KERNEL_SIZE: 7
+    INIT_SIGMA: 2.0
+    REDUCTION: 4
+    STYLE_AUG:
+      ENABLED: False
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 19
+  MASK_FORMER:
+    TRANSFORMER_DECODER_NAME: "MultiScaleMaskedTransformerDecoder"
+    HIDDEN_DIM: 256
+    NHEADS: 8
+    DIM_FEEDFORWARD: 2048
+    DEC_LAYERS: 10
+    PRE_NORM: False
+    ENFORCE_INPUT_PROJ: False
+    NUM_OBJECT_QUERIES: 100
+    CLASS_WEIGHT: 2.0
+    MASK_WEIGHT: 5.0
+    DICE_WEIGHT: 5.0
+ 
+DATASETS:
+  TRAIN: ("gta5_sem_seg_val",)
+  TEST:  ("cityscapes_fine_sem_seg_val",)
+ 
+SOLVER:
+  IMS_PER_BATCH: 4
+  BASE_LR: 0.0001
+  WEIGHT_DECAY: 0.05
+  MAX_ITER: 90000
+  WARMUP_ITERS: 1500
+  WARMUP_FACTOR: 0.01
+  OPTIMIZER: "ADAMW"
+  LR_SCHEDULER_NAME: "WarmupPolyLR"
+  BACKBONE_MULTIPLIER: 0.1
+  CLIP_GRADIENTS:
+    ENABLED: True
+    CLIP_TYPE: "full_model"
+    CLIP_VALUE: 0.01
+    NORM_TYPE: 2.0
+  AMP:
+    ENABLED: True
+  CHECKPOINT_PERIOD: 5000
+ 
+TEST:
+  EVAL_PERIOD: 5000
+ 
+OUTPUT_DIR: "experiments/gta5_training_outputs/csfd_gta5_swinb_90k"
+SEED: 42
+VERSION: 2

@@ -1,0 +1,82 @@
+model,model_key,target,target_key,layer,scale_group,ca_jsd
+Vanilla M2F,m2f,→BDD100K,bdd,0,0,0.4009
+Vanilla M2F,m2f,→BDD100K,bdd,1,1,0.7093
+Vanilla M2F,m2f,→BDD100K,bdd,2,2,0.7851
+Vanilla M2F,m2f,→BDD100K,bdd,3,0,0.5944
+Vanilla M2F,m2f,→BDD100K,bdd,4,1,0.7668
+Vanilla M2F,m2f,→BDD100K,bdd,5,2,0.8086
+Vanilla M2F,m2f,→BDD100K,bdd,6,0,0.6036
+Vanilla M2F,m2f,→BDD100K,bdd,7,1,0.7776
+Vanilla M2F,m2f,→BDD100K,bdd,8,2,0.8211
+Vanilla M2F,m2f,→GTA5,gta5,0,0,0.3642
+Vanilla M2F,m2f,→GTA5,gta5,1,1,0.6646
+Vanilla M2F,m2f,→GTA5,gta5,2,2,0.7549
+Vanilla M2F,m2f,→GTA5,gta5,3,0,0.4973
+Vanilla M2F,m2f,→GTA5,gta5,4,1,0.7082
+Vanilla M2F,m2f,→GTA5,gta5,5,2,0.7828
+Vanilla M2F,m2f,→GTA5,gta5,6,0,0.5001
+Vanilla M2F,m2f,→GTA5,gta5,7,1,0.7156
+Vanilla M2F,m2f,→GTA5,gta5,8,2,0.7923
+Vanilla M2F,m2f,→Mapillary,mapillary,0,0,0.4376
+Vanilla M2F,m2f,→Mapillary,mapillary,1,1,0.7233
+Vanilla M2F,m2f,→Mapillary,mapillary,2,2,0.8102
+Vanilla M2F,m2f,→Mapillary,mapillary,3,0,0.5886
+Vanilla M2F,m2f,→Mapillary,mapillary,4,1,0.7841
+Vanilla M2F,m2f,→Mapillary,mapillary,5,2,0.8393
+Vanilla M2F,m2f,→Mapillary,mapillary,6,0,0.5929
+Vanilla M2F,m2f,→Mapillary,mapillary,7,1,0.7928
+Vanilla M2F,m2f,→Mapillary,mapillary,8,2,0.8493
+CMFormer,cmformer,→BDD100K,bdd,0,0,0.3854
+CMFormer,cmformer,→BDD100K,bdd,1,1,0.7351
+CMFormer,cmformer,→BDD100K,bdd,2,2,0.7579
+CMFormer,cmformer,→BDD100K,bdd,3,0,0.5969
+CMFormer,cmformer,→BDD100K,bdd,4,1,0.7238
+CMFormer,cmformer,→BDD100K,bdd,5,2,0.727
+CMFormer,cmformer,→BDD100K,bdd,6,0,0.6118
+CMFormer,cmformer,→BDD100K,bdd,7,1,0.6817
+CMFormer,cmformer,→BDD100K,bdd,8,2,0.7098
+CMFormer,cmformer,→GTA5,gta5,0,0,0.3412
+CMFormer,cmformer,→GTA5,gta5,1,1,0.6778
+CMFormer,cmformer,→GTA5,gta5,2,2,0.7185
+CMFormer,cmformer,→GTA5,gta5,3,0,0.5017
+CMFormer,cmformer,→GTA5,gta5,4,1,0.6635
+CMFormer,cmformer,→GTA5,gta5,5,2,0.6907
+CMFormer,cmformer,→GTA5,gta5,6,0,0.5188
+CMFormer,cmformer,→GTA5,gta5,7,1,0.6242
+CMFormer,cmformer,→GTA5,gta5,8,2,0.6764
+CMFormer,cmformer,→Mapillary,mapillary,0,0,0.4107
+CMFormer,cmformer,→Mapillary,mapillary,1,1,0.7611
+CMFormer,cmformer,→Mapillary,mapillary,2,2,0.7933
+CMFormer,cmformer,→Mapillary,mapillary,3,0,0.6152
+CMFormer,cmformer,→Mapillary,mapillary,4,1,0.7624
+CMFormer,cmformer,→Mapillary,mapillary,5,2,0.7731
+CMFormer,cmformer,→Mapillary,mapillary,6,0,0.6429
+CMFormer,cmformer,→Mapillary,mapillary,7,1,0.7241
+CMFormer,cmformer,→Mapillary,mapillary,8,2,0.7648
+CSFD (ours),csfd,→BDD100K,bdd,0,0,0.42
+CSFD (ours),csfd,→BDD100K,bdd,1,1,0.7239
+CSFD (ours),csfd,→BDD100K,bdd,2,2,0.7819
+CSFD (ours),csfd,→BDD100K,bdd,3,0,0.6095
+CSFD (ours),csfd,→BDD100K,bdd,4,1,0.7669
+CSFD (ours),csfd,→BDD100K,bdd,5,2,0.8196
+CSFD (ours),csfd,→BDD100K,bdd,6,0,0.6468
+CSFD (ours),csfd,→BDD100K,bdd,7,1,0.7855
+CSFD (ours),csfd,→BDD100K,bdd,8,2,0.8318
+CSFD (ours),csfd,→GTA5,gta5,0,0,0.3787
+CSFD (ours),csfd,→GTA5,gta5,1,1,0.6939
+CSFD (ours),csfd,→GTA5,gta5,2,2,0.761
+CSFD (ours),csfd,→GTA5,gta5,3,0,0.5095
+CSFD (ours),csfd,→GTA5,gta5,4,1,0.7181
+CSFD (ours),csfd,→GTA5,gta5,5,2,0.7927
+CSFD (ours),csfd,→GTA5,gta5,6,0,0.541
+CSFD (ours),csfd,→GTA5,gta5,7,1,0.7341
+CSFD (ours),csfd,→GTA5,gta5,8,2,0.8081
+CSFD (ours),csfd,→Mapillary,mapillary,0,0,0.4489
+CSFD (ours),csfd,→Mapillary,mapillary,1,1,0.7514
+CSFD (ours),csfd,→Mapillary,mapillary,2,2,0.8058
+CSFD (ours),csfd,→Mapillary,mapillary,3,0,0.6079
+CSFD (ours),csfd,→Mapillary,mapillary,4,1,0.787
+CSFD (ours),csfd,→Mapillary,mapillary,5,2,0.8472
+CSFD (ours),csfd,→Mapillary,mapillary,6,0,0.6386
+CSFD (ours),csfd,→Mapillary,mapillary,7,1,0.7977
+CSFD (ours),csfd,→Mapillary,mapillary,8,2,0.8621

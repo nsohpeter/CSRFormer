@@ -1,0 +1,9 @@
+=== CSFD — fog ===
+[07/23 11:22:40 d2.evaluation.testing]: copypaste: 75.8245,92.5089,89.3935,95.8968
+=== CSFD— night ===
+[07/23 11:24:08 d2.evaluation.testing]: copypaste: 37.9900,57.2730,59.4570,72.4778
+=== CSFD — rain ===
+[07/23 11:25:34 d2.evaluation.testing]: copypaste: 67.6678,90.0594,84.2553,94.1414
+=== CSFD — snow ===
+[07/23 11:27:01 d2.evaluation.testing]: copypaste: 63.5175,84.5437,78.3010,91.1993
+

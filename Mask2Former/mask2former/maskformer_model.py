@@ -107,6 +107,14 @@ class MaskFormer(nn.Module):
         dice_weight = cfg.MODEL.MASK_FORMER.DICE_WEIGHT
         mask_weight = cfg.MODEL.MASK_FORMER.MASK_WEIGHT
 
+        # LOGIT-ADJUSTMENT: [NEW] read class frequencies + temperature from
+        # config. CLASS_FREQUENCIES defaults to an empty list (see
+        # add_maskformer2_config) -- an empty list means "no adjustment",
+        # matching SetCriterion's own class_frequencies=None no-op default.
+        class_frequencies = cfg.MODEL.MASK_FORMER.CLASS_FREQUENCIES
+        class_frequencies = class_frequencies if len(class_frequencies) > 0 else None
+        logit_adjust_tau = cfg.MODEL.MASK_FORMER.LOGIT_ADJUST_TAU
+
         # building criterion
         matcher = HungarianMatcher(
             cost_class=class_weight,
@@ -135,6 +143,11 @@ class MaskFormer(nn.Module):
             num_points=cfg.MODEL.MASK_FORMER.TRAIN_NUM_POINTS,
             oversample_ratio=cfg.MODEL.MASK_FORMER.OVERSAMPLE_RATIO,
             importance_sample_ratio=cfg.MODEL.MASK_FORMER.IMPORTANCE_SAMPLE_RATIO,
+            # LOGIT-ADJUSTMENT: [NEW] None (default) is a strict no-op, so any
+            # existing config that doesn't set CLASS_FREQUENCIES behaves
+            # identically to before this change.
+            class_frequencies=class_frequencies,
+            logit_adjust_tau=logit_adjust_tau,
         )
 
         return {

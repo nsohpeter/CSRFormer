@@ -1,44 +1,50 @@
 # Large data — never push these
-datasets/
-pretrained_weights/
+/Mask2Former/datasets/
+**/pretrained_weights/
 *.pth
 *.pkl
 *.pt
+*.ckpt
+*.npy
+*.npz
 
 # Compiled detectron2 (rebuilt from source)
-detectron2/
+/detectron2/
 
-# Python artifacts
+# Python / env
 __pycache__/
 *.pyc
 *.pyo
 *.egg-info/
 .eggs/
+.venv/
 
 # Experiment outputs
 output/
 outputs/
 wandb/
 *.log
-
-# VS Code / OS
-.vscode/
-.DS_Store
-
-# Jupyter
-.ipynb_checkpoints/
+!**/miou_scores/**/*.log
+**/inference_tmp/
+**/inference/
 
 # Training outputs
-experiments/training_outputs/
-*/experiments/training_outputs/
+**/experiments/training_outputs/
 
 # TensorBoard & process files
 events.out.tfevents.*
 *.pid
-training_resume.pid
 
 # Compiled ops
-*/ops/build/
-*/ops/dist/
+**/ops/build/
+**/ops/dist/
 *.so
 *.egg
+
+# Editors / OS / notebooks
+.vscode/
+.DS_Store
+.ipynb_checkpoints/
+
+# Not part of this repo
+/CMFormer/

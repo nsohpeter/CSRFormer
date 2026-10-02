@@ -18,6 +18,7 @@ import logging
 import os
 
 from collections import OrderedDict
+from mask2former.data.datasets import register_custom_datasets  # noqa: F401
 from typing import Any, Dict, List, Set
 
 import torch

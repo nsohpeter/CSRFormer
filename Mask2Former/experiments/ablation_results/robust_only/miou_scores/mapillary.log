@@ -1,0 +1,1500 @@
+/home/peter/miniconda3/envs/Attention-stability/lib/python3.8/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/peter/research/Mask2Former/mask2former/modeling/pixel_decoder/msdeformattn.py:314: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @autocast(enabled=False)
+Loading config custom_configs/training/csfd_swinb_90k.yaml with yaml.unsafe_load. Your machine may be at risk if the file contains malicious content.
+Loading config custom_configs/training/../../configs/cityscapes/semantic-segmentation/swin/../Base-Cityscapes-SemanticSegmentation.yaml with yaml.unsafe_load. Your machine may be at risk if the file contains malicious content.
+
+=== Registering DG datasets (19-class Cityscapes label space) ===
+[cityscapes] cityscapes_fine_sem_seg_train already registered by detectron2 builtin
+[cityscapes] cityscapes_fine_sem_seg_val already registered by detectron2 builtin
+[bdd100k] preparing labels...
+[bdd100k] registered bdd100k_sem_seg_train (7000 samples)
+[bdd100k] registered bdd100k_sem_seg_val (1000 samples)
+[gta5] preparing labels...
+[gta5] registered gta5_sem_seg_val (24966 samples)
+[mapillary] preparing labels...
+[mapillary] config_v2.0.json: matched 29/124 classes -> 19-class
+[mapillary] removed existing registration for mapillary_vistas_sem_seg_train
+[mapillary] removed existing registration for mapillary_vistas_sem_seg_val
+[mapillary] registered mapillary_vistas_sem_seg_train (18000 samples)
+[mapillary] registered mapillary_vistas_sem_seg_val (2000 samples)
+[acdc] registered acdc_sem_seg_val
+[acdc] registered acdc_fog_sem_seg_val
+[acdc] registered acdc_night_sem_seg_val
+[acdc] registered acdc_rain_sem_seg_val
+[acdc] registered acdc_snow_sem_seg_val
+=== Registration complete ===
+
+[mask2former.datasets] Note: Could not import custom datasets: No module named 'mask2former.datasets'
+Command Line Args: Namespace(config_file='custom_configs/training/csfd_swinb_90k.yaml', dist_url='tcp://127.0.0.1:50153', eval_only=True, machine_rank=0, num_gpus=1, num_machines=1, opts=['MODEL.CSFD.USE_GATE', 'False', 'MODEL.WEIGHTS', 'experiments/training_outputs/csfd_ablation_robust_only/model_final.pth', 'DATASETS.TEST', '("mapillary_vistas_sem_seg_val",)', 'OUTPUT_DIR', 'experiments/ablation_results/robust_only'], resume=False)
+[08/05 12:40:04 detectron2]: Rank of current process: 0. World size: 1
+[08/05 12:40:05 detectron2]: Environment info:
+-------------------------------  -----------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.8.20 (default, Oct  3 2024, 15:24:27) [GCC 11.2.0]
+numpy                            1.24.4
+detectron2                       0.6 @/home/peter/research/detectron2/detectron2
+Compiler                         GCC 11.4
+CUDA compiler                    CUDA 12.1
+detectron2 arch flags            8.6
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          2.4.0+cu121 @/home/peter/miniconda3/envs/Attention-stability/lib/python3.8/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            NVIDIA GeForce RTX 3090 (arch=8.6)
+Driver version                   591.86
+CUDA_HOME                        /usr/local/cuda-12.1
+TORCH_CUDA_ARCH_LIST             8.6
+Pillow                           10.4.0
+torchvision                      0.19.0+cu121 @/home/peter/miniconda3/envs/Attention-stability/lib/python3.8/site-packages/torchvision
+torchvision arch flags           5.0, 6.0, 7.0, 7.5, 8.0, 8.6, 9.0
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.13.0
+-------------------------------  -----------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201703
+  - Intel(R) oneAPI Math Kernel Library Version 2022.2-Product Build 20220804 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v3.4.2 (Git Hash 1137e04ec0b5251ca2b4400a4fd3c667ce843d67)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 12.1
+  - NVCC architecture flags: -gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86;-gencode;arch=compute_90,code=sm_90
+  - CuDNN 90.1  (built against CUDA 12.4)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=12.1, CUDNN_VERSION=9.1.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -D_GLIBCXX_USE_CXX11_ABI=0 -fabi-version=11 -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOROCTRACER -DUSE_FBGEMM -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -O2 -fPIC -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-stringop-overflow -Wsuggest-override -Wno-psabi -Wno-error=pedantic -Wno-error=old-style-cast -Wno-missing-braces -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=2.4.0, USE_CUDA=ON, USE_CUDNN=ON, USE_CUSPARSELT=1, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=1, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, USE_ROCM_KERNEL_ASSERT=OFF, 
+
+[08/05 12:40:05 detectron2]: Command line arguments: Namespace(config_file='custom_configs/training/csfd_swinb_90k.yaml', dist_url='tcp://127.0.0.1:50153', eval_only=True, machine_rank=0, num_gpus=1, num_machines=1, opts=['MODEL.CSFD.USE_GATE', 'False', 'MODEL.WEIGHTS', 'experiments/training_outputs/csfd_ablation_robust_only/model_final.pth', 'DATASETS.TEST', '("mapillary_vistas_sem_seg_val",)', 'OUTPUT_DIR', 'experiments/ablation_results/robust_only'], resume=False)
+[08/05 12:40:05 detectron2]: Contents of args.config_file=custom_configs/training/csfd_swinb_90k.yaml:
+_BASE_: "../../configs/cityscapes/semantic-segmentation/swin/maskformer2_swin_base_IN21k_384_bs16_90k.yaml"
+ 
+MODEL:
+  BACKBONE:
+    FREEZE_AT: 0
+  WEIGHTS: "pretrained_weights/swin_base_patch4_window12_384_22k.pkl"
+  SWIN:
+    PRETRAIN_IMG_SIZE: 384
+    WINDOW_SIZE: 12
+    EMBED_DIM: 128
+    DEPTHS: [2, 2, 18, 2]
+    NUM_HEADS: [4, 8, 16, 32]
+  MASK_FORMER:
+    DEC_LAYERS: 10
+  CSFD:
+    ENABLED: True
+    KERNEL_SIZE: 7
+    INIT_SIGMA: 2.0
+    REDUCTION: 4
+ 
+SOLVER:
+  IMS_PER_BATCH: 4
+  BASE_LR: 0.0001
+  WEIGHT_DECAY: 0.05
+  MAX_ITER: 90000
+  LR_SCHEDULER_NAME: "WarmupPolyLR"
+  WARMUP_FACTOR: 1.0
+  WARMUP_ITERS: 0
+  POLY_LR_POWER: 0.9
+  POLY_LR_CONSTANT_ENDING: 0.0
+ 
+INPUT:
+  MIN_SIZE_TRAIN: !!python/object/apply:eval ["[int(x * 0.1 * 1024) for x in range(5, 21)]"]
+  MIN_SIZE_TRAIN_SAMPLING: "choice"
+  MIN_SIZE_TEST: 1024
+  MAX_SIZE_TRAIN: 4096
+  MAX_SIZE_TEST: 2048
+  CROP:
+    ENABLED: True
+    TYPE: "absolute"
+    SIZE: (512, 1024)
+    SINGLE_CATEGORY_MAX_AREA: 1.0
+  COLOR_AUG_SSD: True
+  FORMAT: "RGB"
+ 
+DATALOADER:
+  NUM_WORKERS: 4
+ 
+OUTPUT_DIR: "experiments/training_outputs/csfd_swinb_90k"
+
+[08/05 12:40:05 detectron2]: Running with full config:
+CUDNN_BENCHMARK: false
+DATALOADER:
+  ASPECT_RATIO_GROUPING: true
+  FILTER_EMPTY_ANNOTATIONS: true
+  NUM_WORKERS: 4
+  REPEAT_SQRT: true
+  REPEAT_THRESHOLD: 0.0
+  SAMPLER_TRAIN: TrainingSampler
+DATASETS:
+  PRECOMPUTED_PROPOSAL_TOPK_TEST: 1000
+  PRECOMPUTED_PROPOSAL_TOPK_TRAIN: 2000
+  PROPOSAL_FILES_TEST: []
+  PROPOSAL_FILES_TRAIN: []
+  TEST:
+  - mapillary_vistas_sem_seg_val
+  TRAIN:
+  - cityscapes_fine_sem_seg_train
+FLOAT32_PRECISION: ''
+GLOBAL:
+  HACK: 1.0
+INPUT:
+  COLOR_AUG_SSD: true
+  CROP:
+    ENABLED: true
+    SINGLE_CATEGORY_MAX_AREA: 1.0
+    SIZE:
+    - 512
+    - 1024
+    TYPE: absolute
+  DATASET_MAPPER_NAME: mask_former_semantic
+  FORMAT: RGB
+  IMAGE_SIZE: 1024
+  MASK_FORMAT: polygon
+  MAX_SCALE: 2.0
+  MAX_SIZE_TEST: 2048
+  MAX_SIZE_TRAIN: 4096
+  MIN_SCALE: 0.1
+  MIN_SIZE_TEST: 1024
+  MIN_SIZE_TRAIN:
+  - 512
+  - 614
+  - 716
+  - 819
+  - 921
+  - 1024
+  - 1126
+  - 1228
+  - 1331
+  - 1433
+  - 1536
+  - 1638
+  - 1740
+  - 1843
+  - 1945
+  - 2048
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  RANDOM_FLIP: horizontal
+  SIZE_DIVISIBILITY: -1
+MODEL:
+  ANCHOR_GENERATOR:
+    ANGLES:
+    - - -90
+      - 0
+      - 90
+    ASPECT_RATIOS:
+    - - 0.5
+      - 1.0
+      - 2.0
+    NAME: DefaultAnchorGenerator
+    OFFSET: 0.0
+    SIZES:
+    - - 32
+      - 64
+      - 128
+      - 256
+      - 512
+  BACKBONE:
+    FREEZE_AT: 0
+    NAME: D2SwinTransformer
+  CSFD:
+    ENABLED: true
+    INIT_SIGMA: 2.0
+    KERNEL_SIZE: 7
+    REDUCTION: 4
+    STYLE_AUG:
+      ENABLED: false
+      MODE: full
+      PROB: 0.5
+      SEVERITY: 1.0
+    USE_GATE: false
+    USE_ROBUSTIFIER: true
+  DEVICE: cuda
+  FPN:
+    FUSE_TYPE: sum
+    IN_FEATURES: []
+    NORM: ''
+    OUT_CHANNELS: 256
+  KEYPOINT_ON: false
+  LOAD_PROPOSALS: false
+  MASK_FORMER:
+    CLASS_WEIGHT: 2.0
+    DEC_LAYERS: 10
+    DEEP_SUPERVISION: true
+    DICE_WEIGHT: 5.0
+    DIM_FEEDFORWARD: 2048
+    DROPOUT: 0.0
+    ENC_LAYERS: 0
+    ENFORCE_INPUT_PROJ: false
+    HIDDEN_DIM: 256
+    IMPORTANCE_SAMPLE_RATIO: 0.75
+    MASK_WEIGHT: 5.0
+    NHEADS: 8
+    NO_OBJECT_WEIGHT: 0.1
+    NUM_OBJECT_QUERIES: 100
+    OVERSAMPLE_RATIO: 3.0
+    PRE_NORM: false
+    SIZE_DIVISIBILITY: 32
+    TEST:
+      INSTANCE_ON: false
+      OBJECT_MASK_THRESHOLD: 0.8
+      OVERLAP_THRESHOLD: 0.8
+      PANOPTIC_ON: false
+      SEMANTIC_ON: true
+      SEM_SEG_POSTPROCESSING_BEFORE_INFERENCE: false
+    TRAIN_NUM_POINTS: 12544
+    TRANSFORMER_DECODER_NAME: MultiScaleMaskedTransformerDecoder
+    TRANSFORMER_IN_FEATURE: multi_scale_pixel_decoder
+  MASK_ON: false
+  META_ARCHITECTURE: MaskFormer
+  PANOPTIC_FPN:
+    COMBINE:
+      ENABLED: true
+      INSTANCES_CONFIDENCE_THRESH: 0.5
+      OVERLAP_THRESH: 0.5
+      STUFF_AREA_LIMIT: 4096
+    INSTANCE_LOSS_WEIGHT: 1.0
+  PIXEL_MEAN:
+  - 123.675
+  - 116.28
+  - 103.53
+  PIXEL_STD:
+  - 58.395
+  - 57.12
+  - 57.375
+  PROPOSAL_GENERATOR:
+    MIN_SIZE: 0
+    NAME: RPN
+  RESNETS:
+    DEFORM_MODULATED: false
+    DEFORM_NUM_GROUPS: 1
+    DEFORM_ON_PER_STAGE:
+    - false
+    - false
+    - false
+    - false
+    DEPTH: 50
+    NORM: SyncBN
+    NUM_GROUPS: 1
+    OUT_FEATURES:
+    - res2
+    - res3
+    - res4
+    - res5
+    RES2_OUT_CHANNELS: 256
+    RES4_DILATION: 1
+    RES5_DILATION: 1
+    RES5_MULTI_GRID:
+    - 1
+    - 1
+    - 1
+    STEM_OUT_CHANNELS: 64
+    STEM_TYPE: basic
+    STRIDE_IN_1X1: false
+    WIDTH_PER_GROUP: 64
+  RETINANET:
+    BBOX_REG_LOSS_TYPE: smooth_l1
+    BBOX_REG_WEIGHTS: &id002
+    - 1.0
+    - 1.0
+    - 1.0
+    - 1.0
+    FOCAL_LOSS_ALPHA: 0.25
+    FOCAL_LOSS_GAMMA: 2.0
+    IN_FEATURES:
+    - p3
+    - p4
+    - p5
+    - p6
+    - p7
+    IOU_LABELS:
+    - 0
+    - -1
+    - 1
+    IOU_THRESHOLDS:
+    - 0.4
+    - 0.5
+    NMS_THRESH_TEST: 0.5
+    NORM: ''
+    NUM_CLASSES: 80
+    NUM_CONVS: 4
+    PRIOR_PROB: 0.01
+    SCORE_THRESH_TEST: 0.05
+    SMOOTH_L1_LOSS_BETA: 0.1
+    TOPK_CANDIDATES_TEST: 1000
+  ROI_BOX_CASCADE_HEAD:
+    BBOX_REG_WEIGHTS:
+    - &id001
+      - 10.0
+      - 10.0
+      - 5.0
+      - 5.0
+    - - 20.0
+      - 20.0
+      - 10.0
+      - 10.0
+    - - 30.0
+      - 30.0
+      - 15.0
+      - 15.0
+    IOUS:
+    - 0.5
+    - 0.6
+    - 0.7
+  ROI_BOX_HEAD:
+    BBOX_REG_LOSS_TYPE: smooth_l1
+    BBOX_REG_LOSS_WEIGHT: 1.0
+    BBOX_REG_WEIGHTS: *id001
+    CLS_AGNOSTIC_BBOX_REG: false
+    CONV_DIM: 256
+    FC_DIM: 1024
+    FED_LOSS_FREQ_WEIGHT_POWER: 0.5
+    FED_LOSS_NUM_CLASSES: 50
+    NAME: ''
+    NORM: ''
+    NUM_CONV: 0
+    NUM_FC: 0
+    POOLER_RESOLUTION: 14
+    POOLER_SAMPLING_RATIO: 0
+    POOLER_TYPE: ROIAlignV2
+    SMOOTH_L1_BETA: 0.0
+    TRAIN_ON_PRED_BOXES: false
+    USE_FED_LOSS: false
+    USE_SIGMOID_CE: false
+  ROI_HEADS:
+    BATCH_SIZE_PER_IMAGE: 512
+    IN_FEATURES:
+    - res4
+    IOU_LABELS:
+    - 0
+    - 1
+    IOU_THRESHOLDS:
+    - 0.5
+    NAME: Res5ROIHeads
+    NMS_THRESH_TEST: 0.5
+    NUM_CLASSES: 80
+    POSITIVE_FRACTION: 0.25
+    PROPOSAL_APPEND_GT: true
+    SCORE_THRESH_TEST: 0.05
+  ROI_KEYPOINT_HEAD:
+    CONV_DIMS:
+    - 512
+    - 512
+    - 512
+    - 512
+    - 512
+    - 512
+    - 512
+    - 512
+    LOSS_WEIGHT: 1.0
+    MIN_KEYPOINTS_PER_IMAGE: 1
+    NAME: KRCNNConvDeconvUpsampleHead
+    NORMALIZE_LOSS_BY_VISIBLE_KEYPOINTS: true
+    NUM_KEYPOINTS: 17
+    POOLER_RESOLUTION: 14
+    POOLER_SAMPLING_RATIO: 0
+    POOLER_TYPE: ROIAlignV2
+  ROI_MASK_HEAD:
+    CLS_AGNOSTIC_MASK: false
+    CONV_DIM: 256
+    NAME: MaskRCNNConvUpsampleHead
+    NORM: ''
+    NUM_CONV: 0
+    POOLER_RESOLUTION: 14
+    POOLER_SAMPLING_RATIO: 0
+    POOLER_TYPE: ROIAlignV2
+  RPN:
+    BATCH_SIZE_PER_IMAGE: 256
+    BBOX_REG_LOSS_TYPE: smooth_l1
+    BBOX_REG_LOSS_WEIGHT: 1.0
+    BBOX_REG_WEIGHTS: *id002
+    BOUNDARY_THRESH: -1
+    CONV_DIMS:
+    - -1
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES:
+    - res4
+    IOU_LABELS:
+    - 0
+    - -1
+    - 1
+    IOU_THRESHOLDS:
+    - 0.3
+    - 0.7
+    LOSS_WEIGHT: 1.0
+    NMS_THRESH: 0.7
+    POSITIVE_FRACTION: 0.5
+    POST_NMS_TOPK_TEST: 1000
+    POST_NMS_TOPK_TRAIN: 2000
+    PRE_NMS_TOPK_TEST: 6000
+    PRE_NMS_TOPK_TRAIN: 12000
+    SMOOTH_L1_BETA: 0.0
+  SEM_SEG_HEAD:
+    ASPP_CHANNELS: 256
+    ASPP_DILATIONS:
+    - 6
+    - 12
+    - 18
+    ASPP_DROPOUT: 0.1
+    COMMON_STRIDE: 4
+    CONVS_DIM: 256
+    DEFORMABLE_TRANSFORMER_ENCODER_IN_FEATURES:
+    - res3
+    - res4
+    - res5
+    DEFORMABLE_TRANSFORMER_ENCODER_N_HEADS: 8
+    DEFORMABLE_TRANSFORMER_ENCODER_N_POINTS: 4
+    IGNORE_VALUE: 255
+    IN_FEATURES:
+    - res2
+    - res3
+    - res4
+    - res5
+    LOSS_TYPE: hard_pixel_mining
+    LOSS_WEIGHT: 1.0
+    MASK_DIM: 256
+    NAME: MaskFormerHead
+    NORM: GN
+    NUM_CLASSES: 19
+    PIXEL_DECODER_NAME: MSDeformAttnPixelDecoder
+    PROJECT_CHANNELS:
+    - 48
+    PROJECT_FEATURES:
+    - res2
+    TRANSFORMER_ENC_LAYERS: 6
+    USE_DEPTHWISE_SEPARABLE_CONV: false
+  SWIN:
+    APE: false
+    ATTN_DROP_RATE: 0.0
+    DEPTHS:
+    - 2
+    - 2
+    - 18
+    - 2
+    DROP_PATH_RATE: 0.3
+    DROP_RATE: 0.0
+    EMBED_DIM: 128
+    MLP_RATIO: 4.0
+    NUM_HEADS:
+    - 4
+    - 8
+    - 16
+    - 32
+    OUT_FEATURES:
+    - res2
+    - res3
+    - res4
+    - res5
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    PRETRAIN_IMG_SIZE: 384
+    QKV_BIAS: true
+    QK_SCALE: null
+    USE_CHECKPOINT: false
+    WINDOW_SIZE: 12
+  WEIGHTS: experiments/training_outputs/csfd_ablation_robust_only/model_final.pth
+OUTPUT_DIR: experiments/ablation_results/robust_only
+SEED: -1
+SOLVER:
+  AMP:
+    ENABLED: true
+  BACKBONE_MULTIPLIER: 0.1
+  BASE_LR: 0.0001
+  BASE_LR_END: 0.0
+  BIAS_LR_FACTOR: 1.0
+  CHECKPOINT_PERIOD: 5000
+  CLIP_GRADIENTS:
+    CLIP_TYPE: full_model
+    CLIP_VALUE: 0.01
+    ENABLED: true
+    NORM_TYPE: 2.0
+  GAMMA: 0.1
+  IMS_PER_BATCH: 4
+  LR_SCHEDULER_NAME: WarmupPolyLR
+  MAX_ITER: 90000
+  MOMENTUM: 0.9
+  NESTEROV: false
+  NUM_DECAYS: 3
+  OPTIMIZER: ADAMW
+  POLY_LR_CONSTANT_ENDING: 0.0
+  POLY_LR_POWER: 0.9
+  REFERENCE_WORLD_SIZE: 0
+  RESCALE_INTERVAL: false
+  STEPS:
+  - 30000
+  WARMUP_FACTOR: 1.0
+  WARMUP_ITERS: 0
+  WARMUP_METHOD: linear
+  WEIGHT_DECAY: 0.05
+  WEIGHT_DECAY_BIAS: null
+  WEIGHT_DECAY_EMBED: 0.0
+  WEIGHT_DECAY_NORM: 0.0
+TEST:
+  AUG:
+    ENABLED: false
+    FLIP: true
+    MAX_SIZE: 4096
+    MIN_SIZES:
+    - 512
+    - 768
+    - 1024
+    - 1280
+    - 1536
+    - 1792
+  DETECTIONS_PER_IMAGE: 100
+  EVAL_PERIOD: 5000
+  EXPECTED_RESULTS: []
+  KEYPOINT_OKS_SIGMAS: []
+  PRECISE_BN:
+    ENABLED: false
+    NUM_ITER: 200
+VERSION: 2
+VIS_PERIOD: 0
+
+[08/05 12:40:05 detectron2]: Full config saved to experiments/ablation_results/robust_only/config.yaml
+[08/05 12:40:05 d2.utils.env]: Using a generated random seed 7463680
+[08/05 12:40:05 mask2former.modeling.meta_arch.mask_former_head]: [CSFD] Enabled: kernel_size=7, params=179,457
+[08/05 12:40:06 d2.engine.defaults]: Model:
+MaskFormer(
+  (backbone): D2SwinTransformer(
+    (patch_embed): PatchEmbed(
+      (proj): Conv2d(3, 128, kernel_size=(4, 4), stride=(4, 4))
+      (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    )
+    (pos_drop): Dropout(p=0.0, inplace=False)
+    (layers): ModuleList(
+      (0): BasicLayer(
+        (blocks): ModuleList(
+          (0): SwinTransformerBlock(
+            (norm1): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=128, out_features=384, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=128, out_features=128, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): Identity()
+            (norm2): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=128, out_features=512, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=512, out_features=128, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (1): SwinTransformerBlock(
+            (norm1): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=128, out_features=384, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=128, out_features=128, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.013)
+            (norm2): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=128, out_features=512, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=512, out_features=128, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+        )
+        (downsample): PatchMerging(
+          (reduction): Linear(in_features=512, out_features=256, bias=False)
+          (norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (1): BasicLayer(
+        (blocks): ModuleList(
+          (0): SwinTransformerBlock(
+            (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=256, out_features=768, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=256, out_features=256, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.026)
+            (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=256, out_features=1024, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=1024, out_features=256, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (1): SwinTransformerBlock(
+            (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=256, out_features=768, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=256, out_features=256, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.039)
+            (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=256, out_features=1024, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=1024, out_features=256, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+        )
+        (downsample): PatchMerging(
+          (reduction): Linear(in_features=1024, out_features=512, bias=False)
+          (norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (2): BasicLayer(
+        (blocks): ModuleList(
+          (0): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.052)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (1): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.065)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (2): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.078)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (3): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.091)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (4): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.104)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (5): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.117)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (6): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.130)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (7): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.143)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (8): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.157)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (9): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.170)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (10): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.183)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (11): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.196)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (12): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.209)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (13): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.222)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (14): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.235)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (15): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.248)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (16): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.261)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (17): SwinTransformerBlock(
+            (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=512, out_features=1536, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=512, out_features=512, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.274)
+            (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=512, out_features=2048, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=2048, out_features=512, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+        )
+        (downsample): PatchMerging(
+          (reduction): Linear(in_features=2048, out_features=1024, bias=False)
+          (norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (3): BasicLayer(
+        (blocks): ModuleList(
+          (0): SwinTransformerBlock(
+            (norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=1024, out_features=3072, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=1024, out_features=1024, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.287)
+            (norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (1): SwinTransformerBlock(
+            (norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=1024, out_features=3072, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=1024, out_features=1024, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): DropPath(drop_prob=0.300)
+            (norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+            (mlp): Mlp(
+              (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+              (act): GELU(approximate='none')
+              (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+              (drop): Dropout(p=0.0, inplace=False)
+            )
+          )
+        )
+      )
+    )
+    (norm0): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    (norm3): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+  )
+  (sem_seg_head): MaskFormerHead(
+    (pixel_decoder): MSDeformAttnPixelDecoder(
+      (input_proj): ModuleList(
+        (0): Sequential(
+          (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+          (1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        )
+        (1): Sequential(
+          (0): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+          (1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        )
+        (2): Sequential(
+          (0): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+          (1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        )
+      )
+      (transformer): MSDeformAttnTransformerEncoderOnly(
+        (encoder): MSDeformAttnTransformerEncoder(
+          (layers): ModuleList(
+            (0-5): 6 x MSDeformAttnTransformerEncoderLayer(
+              (self_attn): MSDeformAttn(
+                (sampling_offsets): Linear(in_features=256, out_features=192, bias=True)
+                (attention_weights): Linear(in_features=256, out_features=96, bias=True)
+                (value_proj): Linear(in_features=256, out_features=256, bias=True)
+                (output_proj): Linear(in_features=256, out_features=256, bias=True)
+              )
+              (dropout1): Dropout(p=0.0, inplace=False)
+              (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+              (linear1): Linear(in_features=256, out_features=1024, bias=True)
+              (dropout2): Dropout(p=0.0, inplace=False)
+              (linear2): Linear(in_features=1024, out_features=256, bias=True)
+              (dropout3): Dropout(p=0.0, inplace=False)
+              (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+            )
+          )
+        )
+      )
+      (pe_layer): Positional encoding PositionEmbeddingSine
+          num_pos_feats: 128
+          temperature: 10000
+          normalize: True
+          scale: 6.283185307179586
+      (mask_features): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+      (adapter_1): Conv2d(
+        128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+        (norm): GroupNorm(32, 256, eps=1e-05, affine=True)
+      )
+      (layer_1): Conv2d(
+        256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+        (norm): GroupNorm(32, 256, eps=1e-05, affine=True)
+      )
+    )
+    (predictor): MultiScaleMaskedTransformerDecoder(
+      (pe_layer): Positional encoding PositionEmbeddingSine
+          num_pos_feats: 128
+          temperature: 10000
+          normalize: True
+          scale: 6.283185307179586
+      (transformer_self_attention_layers): ModuleList(
+        (0-8): 9 x SelfAttentionLayer(
+          (self_attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+          )
+          (norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (transformer_cross_attention_layers): ModuleList(
+        (0-8): 9 x CrossAttentionLayer(
+          (multihead_attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+          )
+          (norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (transformer_ffn_layers): ModuleList(
+        (0-8): 9 x FFNLayer(
+          (linear1): Linear(in_features=256, out_features=2048, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (linear2): Linear(in_features=2048, out_features=256, bias=True)
+          (norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (decoder_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      (query_feat): Embedding(100, 256)
+      (query_embed): Embedding(100, 256)
+      (level_embed): Embedding(3, 256)
+      (input_proj): ModuleList(
+        (0-2): 3 x Sequential()
+      )
+      (class_embed): Linear(in_features=256, out_features=20, bias=True)
+      (mask_embed): MLP(
+        (layers): ModuleList(
+          (0-2): 3 x Linear(in_features=256, out_features=256, bias=True)
+        )
+      )
+    )
+    (csfd): CSFD(
+      in_channels=256, kernel_size=7, params=179.5K
+      (low_pass): LearnableGaussianLowPass(
+        (conv): Conv2d(256, 256, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=256, bias=False)
+      )
+      (style_robustifier): StyleRobustifier(
+        (norm): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (transform): Sequential(
+          (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): ReLU(inplace=True)
+          (2): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        )
+      )
+      (gate): SpatialGate(
+        (gate_net): Sequential(
+          (0): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): ReLU(inplace=True)
+          (2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+          (3): ReLU(inplace=True)
+          (4): Conv2d(256, 1, kernel_size=(1, 1), stride=(1, 1))
+        )
+      )
+    )
+  )
+  (criterion): Criterion SetCriterion
+      matcher: Matcher HungarianMatcher
+          cost_class: 2.0
+          cost_mask: 5.0
+          cost_dice: 5.0
+      losses: ['labels', 'masks']
+      weight_dict: {'loss_ce': 2.0, 'loss_mask': 5.0, 'loss_dice': 5.0, 'loss_ce_0': 2.0, 'loss_mask_0': 5.0, 'loss_dice_0': 5.0, 'loss_ce_1': 2.0, 'loss_mask_1': 5.0, 'loss_dice_1': 5.0, 'loss_ce_2': 2.0, 'loss_mask_2': 5.0, 'loss_dice_2': 5.0, 'loss_ce_3': 2.0, 'loss_mask_3': 5.0, 'loss_dice_3': 5.0, 'loss_ce_4': 2.0, 'loss_mask_4': 5.0, 'loss_dice_4': 5.0, 'loss_ce_5': 2.0, 'loss_mask_5': 5.0, 'loss_dice_5': 5.0, 'loss_ce_6': 2.0, 'loss_mask_6': 5.0, 'loss_dice_6': 5.0, 'loss_ce_7': 2.0, 'loss_mask_7': 5.0, 'loss_dice_7': 5.0, 'loss_ce_8': 2.0, 'loss_mask_8': 5.0, 'loss_dice_8': 5.0}
+      num_classes: 19
+      eos_coef: 0.1
+      num_points: 12544
+      oversample_ratio: 3.0
+      importance_sample_ratio: 0.75
+)
+[08/05 12:40:06 d2.checkpoint.detection_checkpoint]: [DetectionCheckpointer] Loading from experiments/training_outputs/csfd_ablation_robust_only/model_final.pth ...
+[08/05 12:40:06 fvcore.common.checkpoint]: [Checkpointer] Loading from experiments/training_outputs/csfd_ablation_robust_only/model_final.pth ...
+[08/05 12:40:09 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=2048, sample_style='choice')]
+[08/05 12:40:09 d2.data.common]: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[08/05 12:40:09 d2.data.common]: Serializing 2000 elements to byte tensors and concatenating them all ...
+[08/05 12:40:09 d2.data.common]: Serialized dataset takes 0.49 MiB
+[08/05 12:40:11 d2.evaluation.evaluator]: Start inference on 2000 batches
+/home/peter/miniconda3/envs/Attention-stability/lib/python3.8/site-packages/torch/functional.py:513: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3609.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/peter/miniconda3/envs/Attention-stability/lib/python3.8/site-packages/fvcore/common/checkpoint.py:252: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  return torch.load(f, map_location=torch.device("cpu"))
+[08/05 12:40:21 d2.evaluation.evaluator]: Inference done 11/2000. Dataloading: 0.0017 s/iter. Inference: 0.2240 s/iter. Eval: 0.8295 s/iter. Total: 1.0553 s/iter. ETA=0:34:58
+[08/05 12:40:27 d2.evaluation.evaluator]: Inference done 17/2000. Dataloading: 0.0021 s/iter. Inference: 0.2049 s/iter. Eval: 0.7492 s/iter. Total: 0.9564 s/iter. ETA=0:31:36
+[08/05 12:40:32 d2.evaluation.evaluator]: Inference done 23/2000. Dataloading: 0.0022 s/iter. Inference: 0.2066 s/iter. Eval: 0.7396 s/iter. Total: 0.9485 s/iter. ETA=0:31:15
+[08/05 12:40:37 d2.evaluation.evaluator]: Inference done 29/2000. Dataloading: 0.0023 s/iter. Inference: 0.2092 s/iter. Eval: 0.7170 s/iter. Total: 0.9286 s/iter. ETA=0:30:30
+[08/05 12:40:43 d2.evaluation.evaluator]: Inference done 34/2000. Dataloading: 0.0023 s/iter. Inference: 0.2066 s/iter. Eval: 0.7410 s/iter. Total: 0.9500 s/iter. ETA=0:31:07
+[08/05 12:40:48 d2.evaluation.evaluator]: Inference done 42/2000. Dataloading: 0.0023 s/iter. Inference: 0.2017 s/iter. Eval: 0.6853 s/iter. Total: 0.8894 s/iter. ETA=0:29:01
+[08/05 12:40:54 d2.evaluation.evaluator]: Inference done 48/2000. Dataloading: 0.0024 s/iter. Inference: 0.2001 s/iter. Eval: 0.7006 s/iter. Total: 0.9032 s/iter. ETA=0:29:22
+[08/05 12:40:59 d2.evaluation.evaluator]: Inference done 55/2000. Dataloading: 0.0024 s/iter. Inference: 0.1992 s/iter. Eval: 0.6804 s/iter. Total: 0.8820 s/iter. ETA=0:28:35
+[08/05 12:41:04 d2.evaluation.evaluator]: Inference done 61/2000. Dataloading: 0.0024 s/iter. Inference: 0.1998 s/iter. Eval: 0.6764 s/iter. Total: 0.8787 s/iter. ETA=0:28:23
+[08/05 12:41:10 d2.evaluation.evaluator]: Inference done 67/2000. Dataloading: 0.0025 s/iter. Inference: 0.1993 s/iter. Eval: 0.6887 s/iter. Total: 0.8906 s/iter. ETA=0:28:41
+[08/05 12:41:17 d2.evaluation.evaluator]: Inference done 75/2000. Dataloading: 0.0025 s/iter. Inference: 0.1991 s/iter. Eval: 0.6789 s/iter. Total: 0.8805 s/iter. ETA=0:28:14
+[08/05 12:41:22 d2.evaluation.evaluator]: Inference done 80/2000. Dataloading: 0.0025 s/iter. Inference: 0.1982 s/iter. Eval: 0.6909 s/iter. Total: 0.8916 s/iter. ETA=0:28:31
+[08/05 12:41:27 d2.evaluation.evaluator]: Inference done 84/2000. Dataloading: 0.0025 s/iter. Inference: 0.2005 s/iter. Eval: 0.7099 s/iter. Total: 0.9130 s/iter. ETA=0:29:09
+[08/05 12:41:33 d2.evaluation.evaluator]: Inference done 91/2000. Dataloading: 0.0025 s/iter. Inference: 0.2006 s/iter. Eval: 0.7020 s/iter. Total: 0.9052 s/iter. ETA=0:28:48
+[08/05 12:41:38 d2.evaluation.evaluator]: Inference done 97/2000. Dataloading: 0.0025 s/iter. Inference: 0.1997 s/iter. Eval: 0.6987 s/iter. Total: 0.9010 s/iter. ETA=0:28:34
+[08/05 12:41:44 d2.evaluation.evaluator]: Inference done 104/2000. Dataloading: 0.0025 s/iter. Inference: 0.1987 s/iter. Eval: 0.6921 s/iter. Total: 0.8935 s/iter. ETA=0:28:14
+[08/05 12:41:50 d2.evaluation.evaluator]: Inference done 113/2000. Dataloading: 0.0025 s/iter. Inference: 0.1976 s/iter. Eval: 0.6750 s/iter. Total: 0.8752 s/iter. ETA=0:27:31
+[08/05 12:41:55 d2.evaluation.evaluator]: Inference done 117/2000. Dataloading: 0.0025 s/iter. Inference: 0.1975 s/iter. Eval: 0.6904 s/iter. Total: 0.8906 s/iter. ETA=0:27:56
+[08/05 12:42:00 d2.evaluation.evaluator]: Inference done 124/2000. Dataloading: 0.0025 s/iter. Inference: 0.1976 s/iter. Eval: 0.6851 s/iter. Total: 0.8854 s/iter. ETA=0:27:40
+[08/05 12:42:06 d2.evaluation.evaluator]: Inference done 131/2000. Dataloading: 0.0026 s/iter. Inference: 0.1975 s/iter. Eval: 0.6772 s/iter. Total: 0.8773 s/iter. ETA=0:27:19
+[08/05 12:42:11 d2.evaluation.evaluator]: Inference done 137/2000. Dataloading: 0.0026 s/iter. Inference: 0.1980 s/iter. Eval: 0.6761 s/iter. Total: 0.8767 s/iter. ETA=0:27:13
+[08/05 12:42:17 d2.evaluation.evaluator]: Inference done 143/2000. Dataloading: 0.0026 s/iter. Inference: 0.1975 s/iter. Eval: 0.6842 s/iter. Total: 0.8844 s/iter. ETA=0:27:22
+[08/05 12:42:22 d2.evaluation.evaluator]: Inference done 147/2000. Dataloading: 0.0026 s/iter. Inference: 0.1972 s/iter. Eval: 0.6955 s/iter. Total: 0.8953 s/iter. ETA=0:27:39
+[08/05 12:42:28 d2.evaluation.evaluator]: Inference done 151/2000. Dataloading: 0.0026 s/iter. Inference: 0.1969 s/iter. Eval: 0.7112 s/iter. Total: 0.9107 s/iter. ETA=0:28:03
+[08/05 12:42:33 d2.evaluation.evaluator]: Inference done 157/2000. Dataloading: 0.0026 s/iter. Inference: 0.1981 s/iter. Eval: 0.7090 s/iter. Total: 0.9097 s/iter. ETA=0:27:56
+[08/05 12:42:40 d2.evaluation.evaluator]: Inference done 162/2000. Dataloading: 0.0026 s/iter. Inference: 0.1981 s/iter. Eval: 0.7193 s/iter. Total: 0.9200 s/iter. ETA=0:28:11
+[08/05 12:42:46 d2.evaluation.evaluator]: Inference done 169/2000. Dataloading: 0.0026 s/iter. Inference: 0.1986 s/iter. Eval: 0.7161 s/iter. Total: 0.9174 s/iter. ETA=0:27:59
+[08/05 12:42:51 d2.evaluation.evaluator]: Inference done 174/2000. Dataloading: 0.0026 s/iter. Inference: 0.1986 s/iter. Eval: 0.7207 s/iter. Total: 0.9220 s/iter. ETA=0:28:03
+[08/05 12:42:56 d2.evaluation.evaluator]: Inference done 179/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.7242 s/iter. Total: 0.9263 s/iter. ETA=0:28:06
+[08/05 12:43:02 d2.evaluation.evaluator]: Inference done 183/2000. Dataloading: 0.0026 s/iter. Inference: 0.2004 s/iter. Eval: 0.7326 s/iter. Total: 0.9357 s/iter. ETA=0:28:20
+[08/05 12:43:07 d2.evaluation.evaluator]: Inference done 190/2000. Dataloading: 0.0026 s/iter. Inference: 0.1998 s/iter. Eval: 0.7261 s/iter. Total: 0.9285 s/iter. ETA=0:28:00
+[08/05 12:43:12 d2.evaluation.evaluator]: Inference done 195/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.7283 s/iter. Total: 0.9305 s/iter. ETA=0:27:59
+[08/05 12:43:17 d2.evaluation.evaluator]: Inference done 201/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.7273 s/iter. Total: 0.9292 s/iter. ETA=0:27:51
+[08/05 12:43:22 d2.evaluation.evaluator]: Inference done 208/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.7211 s/iter. Total: 0.9229 s/iter. ETA=0:27:33
+[08/05 12:43:27 d2.evaluation.evaluator]: Inference done 215/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.7143 s/iter. Total: 0.9163 s/iter. ETA=0:27:15
+[08/05 12:43:33 d2.evaluation.evaluator]: Inference done 223/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.7043 s/iter. Total: 0.9060 s/iter. ETA=0:26:49
+[08/05 12:43:39 d2.evaluation.evaluator]: Inference done 228/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.7121 s/iter. Total: 0.9138 s/iter. ETA=0:26:59
+[08/05 12:43:45 d2.evaluation.evaluator]: Inference done 236/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.7067 s/iter. Total: 0.9085 s/iter. ETA=0:26:42
+[08/05 12:43:52 d2.evaluation.evaluator]: Inference done 240/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.7206 s/iter. Total: 0.9229 s/iter. ETA=0:27:04
+[08/05 12:43:58 d2.evaluation.evaluator]: Inference done 247/2000. Dataloading: 0.0026 s/iter. Inference: 0.2003 s/iter. Eval: 0.7187 s/iter. Total: 0.9217 s/iter. ETA=0:26:55
+[08/05 12:44:05 d2.evaluation.evaluator]: Inference done 255/2000. Dataloading: 0.0026 s/iter. Inference: 0.2002 s/iter. Eval: 0.7153 s/iter. Total: 0.9181 s/iter. ETA=0:26:42
+[08/05 12:44:10 d2.evaluation.evaluator]: Inference done 260/2000. Dataloading: 0.0026 s/iter. Inference: 0.2012 s/iter. Eval: 0.7189 s/iter. Total: 0.9228 s/iter. ETA=0:26:45
+[08/05 12:44:15 d2.evaluation.evaluator]: Inference done 267/2000. Dataloading: 0.0026 s/iter. Inference: 0.2008 s/iter. Eval: 0.7140 s/iter. Total: 0.9175 s/iter. ETA=0:26:30
+[08/05 12:44:20 d2.evaluation.evaluator]: Inference done 273/2000. Dataloading: 0.0026 s/iter. Inference: 0.2008 s/iter. Eval: 0.7123 s/iter. Total: 0.9157 s/iter. ETA=0:26:21
+[08/05 12:44:26 d2.evaluation.evaluator]: Inference done 282/2000. Dataloading: 0.0026 s/iter. Inference: 0.2005 s/iter. Eval: 0.7023 s/iter. Total: 0.9054 s/iter. ETA=0:25:55
+[08/05 12:44:31 d2.evaluation.evaluator]: Inference done 289/2000. Dataloading: 0.0026 s/iter. Inference: 0.2003 s/iter. Eval: 0.6998 s/iter. Total: 0.9028 s/iter. ETA=0:25:44
+[08/05 12:44:38 d2.evaluation.evaluator]: Inference done 297/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6972 s/iter. Total: 0.8999 s/iter. ETA=0:25:32
+[08/05 12:44:43 d2.evaluation.evaluator]: Inference done 304/2000. Dataloading: 0.0026 s/iter. Inference: 0.2001 s/iter. Eval: 0.6941 s/iter. Total: 0.8969 s/iter. ETA=0:25:21
+[08/05 12:44:49 d2.evaluation.evaluator]: Inference done 311/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6935 s/iter. Total: 0.8962 s/iter. ETA=0:25:13
+[08/05 12:44:55 d2.evaluation.evaluator]: Inference done 315/2000. Dataloading: 0.0026 s/iter. Inference: 0.2003 s/iter. Eval: 0.7003 s/iter. Total: 0.9033 s/iter. ETA=0:25:22
+[08/05 12:45:01 d2.evaluation.evaluator]: Inference done 320/2000. Dataloading: 0.0026 s/iter. Inference: 0.2002 s/iter. Eval: 0.7035 s/iter. Total: 0.9064 s/iter. ETA=0:25:22
+[08/05 12:45:06 d2.evaluation.evaluator]: Inference done 326/2000. Dataloading: 0.0026 s/iter. Inference: 0.2002 s/iter. Eval: 0.7021 s/iter. Total: 0.9050 s/iter. ETA=0:25:15
+[08/05 12:45:11 d2.evaluation.evaluator]: Inference done 333/2000. Dataloading: 0.0026 s/iter. Inference: 0.2002 s/iter. Eval: 0.6988 s/iter. Total: 0.9017 s/iter. ETA=0:25:03
+[08/05 12:45:16 d2.evaluation.evaluator]: Inference done 339/2000. Dataloading: 0.0026 s/iter. Inference: 0.1999 s/iter. Eval: 0.6992 s/iter. Total: 0.9018 s/iter. ETA=0:24:57
+[08/05 12:45:22 d2.evaluation.evaluator]: Inference done 345/2000. Dataloading: 0.0026 s/iter. Inference: 0.1997 s/iter. Eval: 0.6989 s/iter. Total: 0.9013 s/iter. ETA=0:24:51
+[08/05 12:45:28 d2.evaluation.evaluator]: Inference done 350/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.7042 s/iter. Total: 0.9064 s/iter. ETA=0:24:55
+[08/05 12:45:33 d2.evaluation.evaluator]: Inference done 358/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6987 s/iter. Total: 0.9008 s/iter. ETA=0:24:39
+[08/05 12:45:40 d2.evaluation.evaluator]: Inference done 365/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6996 s/iter. Total: 0.9017 s/iter. ETA=0:24:34
+[08/05 12:45:45 d2.evaluation.evaluator]: Inference done 370/2000. Dataloading: 0.0026 s/iter. Inference: 0.1999 s/iter. Eval: 0.7019 s/iter. Total: 0.9045 s/iter. ETA=0:24:34
+[08/05 12:45:50 d2.evaluation.evaluator]: Inference done 376/2000. Dataloading: 0.0026 s/iter. Inference: 0.1998 s/iter. Eval: 0.7011 s/iter. Total: 0.9035 s/iter. ETA=0:24:27
+[08/05 12:45:56 d2.evaluation.evaluator]: Inference done 385/2000. Dataloading: 0.0026 s/iter. Inference: 0.1997 s/iter. Eval: 0.6938 s/iter. Total: 0.8962 s/iter. ETA=0:24:07
+[08/05 12:46:01 d2.evaluation.evaluator]: Inference done 391/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6950 s/iter. Total: 0.8973 s/iter. ETA=0:24:03
+[08/05 12:46:07 d2.evaluation.evaluator]: Inference done 397/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6964 s/iter. Total: 0.8986 s/iter. ETA=0:24:00
+[08/05 12:46:13 d2.evaluation.evaluator]: Inference done 405/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6921 s/iter. Total: 0.8943 s/iter. ETA=0:23:46
+[08/05 12:46:20 d2.evaluation.evaluator]: Inference done 414/2000. Dataloading: 0.0026 s/iter. Inference: 0.1997 s/iter. Eval: 0.6889 s/iter. Total: 0.8913 s/iter. ETA=0:23:33
+[08/05 12:46:25 d2.evaluation.evaluator]: Inference done 421/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6864 s/iter. Total: 0.8886 s/iter. ETA=0:23:23
+[08/05 12:46:31 d2.evaluation.evaluator]: Inference done 426/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6893 s/iter. Total: 0.8919 s/iter. ETA=0:23:23
+[08/05 12:46:36 d2.evaluation.evaluator]: Inference done 432/2000. Dataloading: 0.0026 s/iter. Inference: 0.1999 s/iter. Eval: 0.6891 s/iter. Total: 0.8917 s/iter. ETA=0:23:18
+[08/05 12:46:42 d2.evaluation.evaluator]: Inference done 437/2000. Dataloading: 0.0026 s/iter. Inference: 0.1999 s/iter. Eval: 0.6920 s/iter. Total: 0.8946 s/iter. ETA=0:23:18
+[08/05 12:46:47 d2.evaluation.evaluator]: Inference done 441/2000. Dataloading: 0.0026 s/iter. Inference: 0.1998 s/iter. Eval: 0.6954 s/iter. Total: 0.8978 s/iter. ETA=0:23:19
+[08/05 12:46:52 d2.evaluation.evaluator]: Inference done 448/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6940 s/iter. Total: 0.8963 s/iter. ETA=0:23:11
+[08/05 12:46:58 d2.evaluation.evaluator]: Inference done 454/2000. Dataloading: 0.0026 s/iter. Inference: 0.1998 s/iter. Eval: 0.6941 s/iter. Total: 0.8966 s/iter. ETA=0:23:06
+[08/05 12:47:03 d2.evaluation.evaluator]: Inference done 459/2000. Dataloading: 0.0026 s/iter. Inference: 0.1997 s/iter. Eval: 0.6954 s/iter. Total: 0.8978 s/iter. ETA=0:23:03
+[08/05 12:47:08 d2.evaluation.evaluator]: Inference done 465/2000. Dataloading: 0.0026 s/iter. Inference: 0.1997 s/iter. Eval: 0.6953 s/iter. Total: 0.8976 s/iter. ETA=0:22:57
+[08/05 12:47:13 d2.evaluation.evaluator]: Inference done 471/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6951 s/iter. Total: 0.8974 s/iter. ETA=0:22:52
+[08/05 12:47:20 d2.evaluation.evaluator]: Inference done 478/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6969 s/iter. Total: 0.8989 s/iter. ETA=0:22:48
+[08/05 12:47:26 d2.evaluation.evaluator]: Inference done 483/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6986 s/iter. Total: 0.9009 s/iter. ETA=0:22:46
+[08/05 12:47:31 d2.evaluation.evaluator]: Inference done 488/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.7001 s/iter. Total: 0.9022 s/iter. ETA=0:22:44
+[08/05 12:47:38 d2.evaluation.evaluator]: Inference done 494/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.7033 s/iter. Total: 0.9053 s/iter. ETA=0:22:43
+[08/05 12:47:43 d2.evaluation.evaluator]: Inference done 498/2000. Dataloading: 0.0026 s/iter. Inference: 0.1997 s/iter. Eval: 0.7066 s/iter. Total: 0.9090 s/iter. ETA=0:22:45
+[08/05 12:47:48 d2.evaluation.evaluator]: Inference done 504/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.7062 s/iter. Total: 0.9085 s/iter. ETA=0:22:39
+[08/05 12:47:54 d2.evaluation.evaluator]: Inference done 510/2000. Dataloading: 0.0026 s/iter. Inference: 0.1997 s/iter. Eval: 0.7056 s/iter. Total: 0.9080 s/iter. ETA=0:22:32
+[08/05 12:48:01 d2.evaluation.evaluator]: Inference done 518/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.7056 s/iter. Total: 0.9078 s/iter. ETA=0:22:25
+[08/05 12:48:07 d2.evaluation.evaluator]: Inference done 525/2000. Dataloading: 0.0026 s/iter. Inference: 0.1998 s/iter. Eval: 0.7049 s/iter. Total: 0.9074 s/iter. ETA=0:22:18
+[08/05 12:48:14 d2.evaluation.evaluator]: Inference done 531/2000. Dataloading: 0.0026 s/iter. Inference: 0.1997 s/iter. Eval: 0.7079 s/iter. Total: 0.9103 s/iter. ETA=0:22:17
+[08/05 12:48:20 d2.evaluation.evaluator]: Inference done 537/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.7080 s/iter. Total: 0.9107 s/iter. ETA=0:22:12
+[08/05 12:48:25 d2.evaluation.evaluator]: Inference done 545/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.7049 s/iter. Total: 0.9076 s/iter. ETA=0:22:00
+[08/05 12:48:31 d2.evaluation.evaluator]: Inference done 553/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.7024 s/iter. Total: 0.9052 s/iter. ETA=0:21:49
+[08/05 12:48:36 d2.evaluation.evaluator]: Inference done 559/2000. Dataloading: 0.0026 s/iter. Inference: 0.2002 s/iter. Eval: 0.7020 s/iter. Total: 0.9049 s/iter. ETA=0:21:43
+[08/05 12:48:42 d2.evaluation.evaluator]: Inference done 568/2000. Dataloading: 0.0026 s/iter. Inference: 0.2001 s/iter. Eval: 0.6985 s/iter. Total: 0.9013 s/iter. ETA=0:21:30
+[08/05 12:48:48 d2.evaluation.evaluator]: Inference done 574/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6988 s/iter. Total: 0.9015 s/iter. ETA=0:21:25
+[08/05 12:48:53 d2.evaluation.evaluator]: Inference done 578/2000. Dataloading: 0.0026 s/iter. Inference: 0.1999 s/iter. Eval: 0.7015 s/iter. Total: 0.9041 s/iter. ETA=0:21:25
+[08/05 12:48:59 d2.evaluation.evaluator]: Inference done 584/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.7021 s/iter. Total: 0.9048 s/iter. ETA=0:21:21
+[08/05 12:49:04 d2.evaluation.evaluator]: Inference done 589/2000. Dataloading: 0.0026 s/iter. Inference: 0.1999 s/iter. Eval: 0.7035 s/iter. Total: 0.9061 s/iter. ETA=0:21:18
+[08/05 12:49:09 d2.evaluation.evaluator]: Inference done 594/2000. Dataloading: 0.0026 s/iter. Inference: 0.1999 s/iter. Eval: 0.7046 s/iter. Total: 0.9072 s/iter. ETA=0:21:15
+[08/05 12:49:15 d2.evaluation.evaluator]: Inference done 603/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6998 s/iter. Total: 0.9025 s/iter. ETA=0:21:00
+[08/05 12:49:20 d2.evaluation.evaluator]: Inference done 609/2000. Dataloading: 0.0026 s/iter. Inference: 0.2002 s/iter. Eval: 0.6997 s/iter. Total: 0.9026 s/iter. ETA=0:20:55
+[08/05 12:49:25 d2.evaluation.evaluator]: Inference done 614/2000. Dataloading: 0.0026 s/iter. Inference: 0.2004 s/iter. Eval: 0.7006 s/iter. Total: 0.9036 s/iter. ETA=0:20:52
+[08/05 12:49:31 d2.evaluation.evaluator]: Inference done 620/2000. Dataloading: 0.0026 s/iter. Inference: 0.2004 s/iter. Eval: 0.7002 s/iter. Total: 0.9033 s/iter. ETA=0:20:46
+[08/05 12:49:36 d2.evaluation.evaluator]: Inference done 627/2000. Dataloading: 0.0026 s/iter. Inference: 0.2002 s/iter. Eval: 0.6989 s/iter. Total: 0.9018 s/iter. ETA=0:20:38
+[08/05 12:49:41 d2.evaluation.evaluator]: Inference done 634/2000. Dataloading: 0.0026 s/iter. Inference: 0.2001 s/iter. Eval: 0.6973 s/iter. Total: 0.9001 s/iter. ETA=0:20:29
+[08/05 12:49:46 d2.evaluation.evaluator]: Inference done 638/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6998 s/iter. Total: 0.9026 s/iter. ETA=0:20:29
+[08/05 12:49:52 d2.evaluation.evaluator]: Inference done 644/2000. Dataloading: 0.0026 s/iter. Inference: 0.2002 s/iter. Eval: 0.6995 s/iter. Total: 0.9024 s/iter. ETA=0:20:23
+[08/05 12:49:57 d2.evaluation.evaluator]: Inference done 649/2000. Dataloading: 0.0026 s/iter. Inference: 0.2001 s/iter. Eval: 0.7005 s/iter. Total: 0.9034 s/iter. ETA=0:20:20
+[08/05 12:50:02 d2.evaluation.evaluator]: Inference done 656/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6988 s/iter. Total: 0.9015 s/iter. ETA=0:20:11
+[08/05 12:50:07 d2.evaluation.evaluator]: Inference done 662/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6984 s/iter. Total: 0.9011 s/iter. ETA=0:20:05
+[08/05 12:50:13 d2.evaluation.evaluator]: Inference done 670/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6966 s/iter. Total: 0.8994 s/iter. ETA=0:19:56
+[08/05 12:50:19 d2.evaluation.evaluator]: Inference done 675/2000. Dataloading: 0.0026 s/iter. Inference: 0.2001 s/iter. Eval: 0.6982 s/iter. Total: 0.9010 s/iter. ETA=0:19:53
+[08/05 12:50:24 d2.evaluation.evaluator]: Inference done 680/2000. Dataloading: 0.0026 s/iter. Inference: 0.2002 s/iter. Eval: 0.6993 s/iter. Total: 0.9022 s/iter. ETA=0:19:50
+[08/05 12:50:29 d2.evaluation.evaluator]: Inference done 687/2000. Dataloading: 0.0026 s/iter. Inference: 0.2001 s/iter. Eval: 0.6980 s/iter. Total: 0.9008 s/iter. ETA=0:19:42
+[08/05 12:50:35 d2.evaluation.evaluator]: Inference done 694/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6966 s/iter. Total: 0.8993 s/iter. ETA=0:19:34
+[08/05 12:50:41 d2.evaluation.evaluator]: Inference done 701/2000. Dataloading: 0.0026 s/iter. Inference: 0.1999 s/iter. Eval: 0.6965 s/iter. Total: 0.8991 s/iter. ETA=0:19:27
+[08/05 12:50:46 d2.evaluation.evaluator]: Inference done 706/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6978 s/iter. Total: 0.9005 s/iter. ETA=0:19:25
+[08/05 12:50:52 d2.evaluation.evaluator]: Inference done 711/2000. Dataloading: 0.0026 s/iter. Inference: 0.2000 s/iter. Eval: 0.6990 s/iter. Total: 0.9017 s/iter. ETA=0:19:22
+[08/05 12:50:57 d2.evaluation.evaluator]: Inference done 719/2000. Dataloading: 0.0026 s/iter. Inference: 0.1999 s/iter. Eval: 0.6964 s/iter. Total: 0.8990 s/iter. ETA=0:19:11
+[08/05 12:51:03 d2.evaluation.evaluator]: Inference done 724/2000. Dataloading: 0.0026 s/iter. Inference: 0.1998 s/iter. Eval: 0.6984 s/iter. Total: 0.9009 s/iter. ETA=0:19:09
+[08/05 12:51:09 d2.evaluation.evaluator]: Inference done 733/2000. Dataloading: 0.0026 s/iter. Inference: 0.1997 s/iter. Eval: 0.6962 s/iter. Total: 0.8985 s/iter. ETA=0:18:58
+[08/05 12:51:14 d2.evaluation.evaluator]: Inference done 740/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6945 s/iter. Total: 0.8968 s/iter. ETA=0:18:50
+[08/05 12:51:20 d2.evaluation.evaluator]: Inference done 745/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6964 s/iter. Total: 0.8986 s/iter. ETA=0:18:47
+[08/05 12:51:25 d2.evaluation.evaluator]: Inference done 752/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6952 s/iter. Total: 0.8974 s/iter. ETA=0:18:39
+[08/05 12:51:30 d2.evaluation.evaluator]: Inference done 762/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6899 s/iter. Total: 0.8922 s/iter. ETA=0:18:24
+[08/05 12:51:36 d2.evaluation.evaluator]: Inference done 769/2000. Dataloading: 0.0026 s/iter. Inference: 0.1997 s/iter. Eval: 0.6894 s/iter. Total: 0.8918 s/iter. ETA=0:18:17
+[08/05 12:51:42 d2.evaluation.evaluator]: Inference done 775/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6893 s/iter. Total: 0.8916 s/iter. ETA=0:18:12
+[08/05 12:51:47 d2.evaluation.evaluator]: Inference done 780/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6902 s/iter. Total: 0.8924 s/iter. ETA=0:18:08
+[08/05 12:51:53 d2.evaluation.evaluator]: Inference done 787/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6897 s/iter. Total: 0.8919 s/iter. ETA=0:18:01
+[08/05 12:51:58 d2.evaluation.evaluator]: Inference done 792/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6905 s/iter. Total: 0.8927 s/iter. ETA=0:17:58
+[08/05 12:52:03 d2.evaluation.evaluator]: Inference done 799/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6899 s/iter. Total: 0.8920 s/iter. ETA=0:17:51
+[08/05 12:52:10 d2.evaluation.evaluator]: Inference done 806/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6898 s/iter. Total: 0.8919 s/iter. ETA=0:17:44
+[08/05 12:52:15 d2.evaluation.evaluator]: Inference done 814/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6879 s/iter. Total: 0.8899 s/iter. ETA=0:17:35
+[08/05 12:52:20 d2.evaluation.evaluator]: Inference done 819/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6891 s/iter. Total: 0.8911 s/iter. ETA=0:17:32
+[08/05 12:52:26 d2.evaluation.evaluator]: Inference done 823/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6915 s/iter. Total: 0.8935 s/iter. ETA=0:17:31
+[08/05 12:52:31 d2.evaluation.evaluator]: Inference done 827/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6933 s/iter. Total: 0.8956 s/iter. ETA=0:17:30
+[08/05 12:52:36 d2.evaluation.evaluator]: Inference done 834/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6918 s/iter. Total: 0.8941 s/iter. ETA=0:17:22
+[08/05 12:52:41 d2.evaluation.evaluator]: Inference done 841/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6905 s/iter. Total: 0.8928 s/iter. ETA=0:17:14
+[08/05 12:52:47 d2.evaluation.evaluator]: Inference done 846/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6925 s/iter. Total: 0.8947 s/iter. ETA=0:17:12
+[08/05 12:52:52 d2.evaluation.evaluator]: Inference done 854/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6900 s/iter. Total: 0.8921 s/iter. ETA=0:17:02
+[08/05 12:52:58 d2.evaluation.evaluator]: Inference done 862/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6880 s/iter. Total: 0.8901 s/iter. ETA=0:16:52
+[08/05 12:53:04 d2.evaluation.evaluator]: Inference done 869/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6877 s/iter. Total: 0.8898 s/iter. ETA=0:16:46
+[08/05 12:53:09 d2.evaluation.evaluator]: Inference done 874/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6888 s/iter. Total: 0.8907 s/iter. ETA=0:16:42
+[08/05 12:53:14 d2.evaluation.evaluator]: Inference done 880/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6887 s/iter. Total: 0.8906 s/iter. ETA=0:16:37
+[08/05 12:53:21 d2.evaluation.evaluator]: Inference done 887/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6889 s/iter. Total: 0.8908 s/iter. ETA=0:16:31
+[08/05 12:53:26 d2.evaluation.evaluator]: Inference done 893/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6888 s/iter. Total: 0.8906 s/iter. ETA=0:16:25
+[08/05 12:53:32 d2.evaluation.evaluator]: Inference done 899/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6900 s/iter. Total: 0.8917 s/iter. ETA=0:16:21
+[08/05 12:53:38 d2.evaluation.evaluator]: Inference done 907/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6883 s/iter. Total: 0.8899 s/iter. ETA=0:16:12
+[08/05 12:53:44 d2.evaluation.evaluator]: Inference done 913/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6891 s/iter. Total: 0.8907 s/iter. ETA=0:16:08
+[08/05 12:53:49 d2.evaluation.evaluator]: Inference done 921/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6869 s/iter. Total: 0.8885 s/iter. ETA=0:15:58
+[08/05 12:53:55 d2.evaluation.evaluator]: Inference done 927/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6878 s/iter. Total: 0.8895 s/iter. ETA=0:15:54
+[08/05 12:54:01 d2.evaluation.evaluator]: Inference done 934/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6875 s/iter. Total: 0.8891 s/iter. ETA=0:15:47
+[08/05 12:54:07 d2.evaluation.evaluator]: Inference done 941/2000. Dataloading: 0.0026 s/iter. Inference: 0.1988 s/iter. Eval: 0.6878 s/iter. Total: 0.8894 s/iter. ETA=0:15:41
+[08/05 12:54:13 d2.evaluation.evaluator]: Inference done 949/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6859 s/iter. Total: 0.8877 s/iter. ETA=0:15:32
+[08/05 12:54:18 d2.evaluation.evaluator]: Inference done 955/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6860 s/iter. Total: 0.8878 s/iter. ETA=0:15:27
+[08/05 12:54:26 d2.evaluation.evaluator]: Inference done 960/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6889 s/iter. Total: 0.8906 s/iter. ETA=0:15:26
+[08/05 12:54:31 d2.evaluation.evaluator]: Inference done 967/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6877 s/iter. Total: 0.8894 s/iter. ETA=0:15:18
+[08/05 12:54:37 d2.evaluation.evaluator]: Inference done 974/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6874 s/iter. Total: 0.8891 s/iter. ETA=0:15:12
+[08/05 12:54:43 d2.evaluation.evaluator]: Inference done 980/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6885 s/iter. Total: 0.8903 s/iter. ETA=0:15:08
+[08/05 12:54:48 d2.evaluation.evaluator]: Inference done 988/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6865 s/iter. Total: 0.8883 s/iter. ETA=0:14:58
+[08/05 12:54:54 d2.evaluation.evaluator]: Inference done 994/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6871 s/iter. Total: 0.8888 s/iter. ETA=0:14:54
+[08/05 12:54:59 d2.evaluation.evaluator]: Inference done 1001/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6861 s/iter. Total: 0.8877 s/iter. ETA=0:14:46
+[08/05 12:55:05 d2.evaluation.evaluator]: Inference done 1006/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6872 s/iter. Total: 0.8888 s/iter. ETA=0:14:43
+[08/05 12:55:10 d2.evaluation.evaluator]: Inference done 1014/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6854 s/iter. Total: 0.8872 s/iter. ETA=0:14:34
+[08/05 12:55:16 d2.evaluation.evaluator]: Inference done 1022/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6837 s/iter. Total: 0.8855 s/iter. ETA=0:14:26
+[08/05 12:55:21 d2.evaluation.evaluator]: Inference done 1028/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6838 s/iter. Total: 0.8856 s/iter. ETA=0:14:20
+[08/05 12:55:27 d2.evaluation.evaluator]: Inference done 1035/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6840 s/iter. Total: 0.8857 s/iter. ETA=0:14:14
+[08/05 12:55:34 d2.evaluation.evaluator]: Inference done 1041/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6847 s/iter. Total: 0.8865 s/iter. ETA=0:14:10
+[08/05 12:55:39 d2.evaluation.evaluator]: Inference done 1045/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6860 s/iter. Total: 0.8880 s/iter. ETA=0:14:08
+[08/05 12:55:44 d2.evaluation.evaluator]: Inference done 1053/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6844 s/iter. Total: 0.8863 s/iter. ETA=0:13:59
+[08/05 12:55:49 d2.evaluation.evaluator]: Inference done 1060/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6836 s/iter. Total: 0.8856 s/iter. ETA=0:13:52
+[08/05 12:55:55 d2.evaluation.evaluator]: Inference done 1068/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6828 s/iter. Total: 0.8847 s/iter. ETA=0:13:44
+[08/05 12:56:01 d2.evaluation.evaluator]: Inference done 1071/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6852 s/iter. Total: 0.8872 s/iter. ETA=0:13:44
+[08/05 12:56:06 d2.evaluation.evaluator]: Inference done 1077/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6850 s/iter. Total: 0.8870 s/iter. ETA=0:13:38
+[08/05 12:56:12 d2.evaluation.evaluator]: Inference done 1083/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6856 s/iter. Total: 0.8875 s/iter. ETA=0:13:33
+[08/05 12:56:17 d2.evaluation.evaluator]: Inference done 1091/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6839 s/iter. Total: 0.8859 s/iter. ETA=0:13:25
+[08/05 12:56:22 d2.evaluation.evaluator]: Inference done 1098/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6828 s/iter. Total: 0.8849 s/iter. ETA=0:13:18
+[08/05 12:56:28 d2.evaluation.evaluator]: Inference done 1106/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6821 s/iter. Total: 0.8841 s/iter. ETA=0:13:10
+[08/05 12:56:34 d2.evaluation.evaluator]: Inference done 1111/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6828 s/iter. Total: 0.8848 s/iter. ETA=0:13:06
+[08/05 12:56:39 d2.evaluation.evaluator]: Inference done 1117/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6826 s/iter. Total: 0.8846 s/iter. ETA=0:13:01
+[08/05 12:56:44 d2.evaluation.evaluator]: Inference done 1124/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6818 s/iter. Total: 0.8837 s/iter. ETA=0:12:54
+[08/05 12:56:49 d2.evaluation.evaluator]: Inference done 1132/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6801 s/iter. Total: 0.8820 s/iter. ETA=0:12:45
+[08/05 12:56:54 d2.evaluation.evaluator]: Inference done 1137/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6808 s/iter. Total: 0.8827 s/iter. ETA=0:12:41
+[08/05 12:56:59 d2.evaluation.evaluator]: Inference done 1144/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6799 s/iter. Total: 0.8818 s/iter. ETA=0:12:34
+[08/05 12:57:05 d2.evaluation.evaluator]: Inference done 1151/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6790 s/iter. Total: 0.8809 s/iter. ETA=0:12:27
+[08/05 12:57:10 d2.evaluation.evaluator]: Inference done 1157/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6795 s/iter. Total: 0.8813 s/iter. ETA=0:12:22
+[08/05 12:57:16 d2.evaluation.evaluator]: Inference done 1162/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6802 s/iter. Total: 0.8820 s/iter. ETA=0:12:19
+[08/05 12:57:21 d2.evaluation.evaluator]: Inference done 1170/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6787 s/iter. Total: 0.8805 s/iter. ETA=0:12:10
+[08/05 12:57:26 d2.evaluation.evaluator]: Inference done 1176/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6789 s/iter. Total: 0.8807 s/iter. ETA=0:12:05
+[08/05 12:57:33 d2.evaluation.evaluator]: Inference done 1182/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6801 s/iter. Total: 0.8818 s/iter. ETA=0:12:01
+[08/05 12:57:39 d2.evaluation.evaluator]: Inference done 1188/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6808 s/iter. Total: 0.8826 s/iter. ETA=0:11:56
+[08/05 12:57:44 d2.evaluation.evaluator]: Inference done 1193/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6814 s/iter. Total: 0.8831 s/iter. ETA=0:11:52
+[08/05 12:57:49 d2.evaluation.evaluator]: Inference done 1200/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6804 s/iter. Total: 0.8823 s/iter. ETA=0:11:45
+[08/05 12:57:55 d2.evaluation.evaluator]: Inference done 1207/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6798 s/iter. Total: 0.8816 s/iter. ETA=0:11:39
+[08/05 12:58:00 d2.evaluation.evaluator]: Inference done 1216/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6774 s/iter. Total: 0.8793 s/iter. ETA=0:11:29
+[08/05 12:58:06 d2.evaluation.evaluator]: Inference done 1222/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6782 s/iter. Total: 0.8801 s/iter. ETA=0:11:24
+[08/05 12:58:11 d2.evaluation.evaluator]: Inference done 1229/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6775 s/iter. Total: 0.8794 s/iter. ETA=0:11:18
+[08/05 12:58:17 d2.evaluation.evaluator]: Inference done 1235/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6777 s/iter. Total: 0.8795 s/iter. ETA=0:11:12
+[08/05 12:58:23 d2.evaluation.evaluator]: Inference done 1244/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6759 s/iter. Total: 0.8777 s/iter. ETA=0:11:03
+[08/05 12:58:28 d2.evaluation.evaluator]: Inference done 1252/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6746 s/iter. Total: 0.8765 s/iter. ETA=0:10:55
+[08/05 12:58:34 d2.evaluation.evaluator]: Inference done 1259/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6744 s/iter. Total: 0.8763 s/iter. ETA=0:10:49
+[08/05 12:58:39 d2.evaluation.evaluator]: Inference done 1266/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6740 s/iter. Total: 0.8758 s/iter. ETA=0:10:42
+[08/05 12:58:45 d2.evaluation.evaluator]: Inference done 1274/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6726 s/iter. Total: 0.8744 s/iter. ETA=0:10:34
+[08/05 12:58:51 d2.evaluation.evaluator]: Inference done 1280/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6735 s/iter. Total: 0.8753 s/iter. ETA=0:10:30
+[08/05 12:58:57 d2.evaluation.evaluator]: Inference done 1288/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6728 s/iter. Total: 0.8746 s/iter. ETA=0:10:22
+[08/05 12:59:03 d2.evaluation.evaluator]: Inference done 1292/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6746 s/iter. Total: 0.8763 s/iter. ETA=0:10:20
+[08/05 12:59:08 d2.evaluation.evaluator]: Inference done 1298/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6744 s/iter. Total: 0.8762 s/iter. ETA=0:10:15
+[08/05 12:59:13 d2.evaluation.evaluator]: Inference done 1305/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6740 s/iter. Total: 0.8757 s/iter. ETA=0:10:08
+[08/05 12:59:20 d2.evaluation.evaluator]: Inference done 1312/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6740 s/iter. Total: 0.8757 s/iter. ETA=0:10:02
+[08/05 12:59:25 d2.evaluation.evaluator]: Inference done 1317/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6749 s/iter. Total: 0.8765 s/iter. ETA=0:09:58
+[08/05 12:59:31 d2.evaluation.evaluator]: Inference done 1322/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6760 s/iter. Total: 0.8776 s/iter. ETA=0:09:55
+[08/05 12:59:36 d2.evaluation.evaluator]: Inference done 1328/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6759 s/iter. Total: 0.8775 s/iter. ETA=0:09:49
+[08/05 12:59:41 d2.evaluation.evaluator]: Inference done 1333/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6767 s/iter. Total: 0.8783 s/iter. ETA=0:09:45
+[08/05 12:59:47 d2.evaluation.evaluator]: Inference done 1339/2000. Dataloading: 0.0026 s/iter. Inference: 0.1988 s/iter. Eval: 0.6770 s/iter. Total: 0.8785 s/iter. ETA=0:09:40
+[08/05 12:59:52 d2.evaluation.evaluator]: Inference done 1344/2000. Dataloading: 0.0026 s/iter. Inference: 0.1988 s/iter. Eval: 0.6776 s/iter. Total: 0.8791 s/iter. ETA=0:09:36
+[08/05 12:59:58 d2.evaluation.evaluator]: Inference done 1347/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6799 s/iter. Total: 0.8815 s/iter. ETA=0:09:35
+[08/05 13:00:04 d2.evaluation.evaluator]: Inference done 1353/2000. Dataloading: 0.0026 s/iter. Inference: 0.1989 s/iter. Eval: 0.6804 s/iter. Total: 0.8820 s/iter. ETA=0:09:30
+[08/05 13:00:10 d2.evaluation.evaluator]: Inference done 1358/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6812 s/iter. Total: 0.8830 s/iter. ETA=0:09:26
+[08/05 13:00:16 d2.evaluation.evaluator]: Inference done 1365/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6810 s/iter. Total: 0.8828 s/iter. ETA=0:09:20
+[08/05 13:00:21 d2.evaluation.evaluator]: Inference done 1371/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6809 s/iter. Total: 0.8827 s/iter. ETA=0:09:15
+[08/05 13:00:27 d2.evaluation.evaluator]: Inference done 1377/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6814 s/iter. Total: 0.8832 s/iter. ETA=0:09:10
+[08/05 13:00:33 d2.evaluation.evaluator]: Inference done 1385/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6805 s/iter. Total: 0.8822 s/iter. ETA=0:09:02
+[08/05 13:00:39 d2.evaluation.evaluator]: Inference done 1393/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6804 s/iter. Total: 0.8822 s/iter. ETA=0:08:55
+[08/05 13:00:45 d2.evaluation.evaluator]: Inference done 1400/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6799 s/iter. Total: 0.8816 s/iter. ETA=0:08:48
+[08/05 13:00:52 d2.evaluation.evaluator]: Inference done 1407/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6809 s/iter. Total: 0.8826 s/iter. ETA=0:08:43
+[08/05 13:00:58 d2.evaluation.evaluator]: Inference done 1413/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6806 s/iter. Total: 0.8825 s/iter. ETA=0:08:38
+[08/05 13:01:04 d2.evaluation.evaluator]: Inference done 1420/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6807 s/iter. Total: 0.8825 s/iter. ETA=0:08:31
+[08/05 13:01:09 d2.evaluation.evaluator]: Inference done 1425/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6813 s/iter. Total: 0.8832 s/iter. ETA=0:08:27
+[08/05 13:01:15 d2.evaluation.evaluator]: Inference done 1433/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6799 s/iter. Total: 0.8820 s/iter. ETA=0:08:20
+[08/05 13:01:20 d2.evaluation.evaluator]: Inference done 1443/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6777 s/iter. Total: 0.8796 s/iter. ETA=0:08:09
+[08/05 13:01:26 d2.evaluation.evaluator]: Inference done 1450/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6778 s/iter. Total: 0.8798 s/iter. ETA=0:08:03
+[08/05 13:01:32 d2.evaluation.evaluator]: Inference done 1455/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6784 s/iter. Total: 0.8803 s/iter. ETA=0:07:59
+[08/05 13:01:37 d2.evaluation.evaluator]: Inference done 1459/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6794 s/iter. Total: 0.8815 s/iter. ETA=0:07:56
+[08/05 13:01:42 d2.evaluation.evaluator]: Inference done 1465/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6793 s/iter. Total: 0.8813 s/iter. ETA=0:07:51
+[08/05 13:01:47 d2.evaluation.evaluator]: Inference done 1472/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6787 s/iter. Total: 0.8808 s/iter. ETA=0:07:45
+[08/05 13:01:53 d2.evaluation.evaluator]: Inference done 1478/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6789 s/iter. Total: 0.8809 s/iter. ETA=0:07:39
+[08/05 13:01:59 d2.evaluation.evaluator]: Inference done 1486/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6784 s/iter. Total: 0.8805 s/iter. ETA=0:07:32
+[08/05 13:02:05 d2.evaluation.evaluator]: Inference done 1493/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6780 s/iter. Total: 0.8800 s/iter. ETA=0:07:26
+[08/05 13:02:10 d2.evaluation.evaluator]: Inference done 1501/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6769 s/iter. Total: 0.8789 s/iter. ETA=0:07:18
+[08/05 13:02:15 d2.evaluation.evaluator]: Inference done 1509/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6760 s/iter. Total: 0.8779 s/iter. ETA=0:07:11
+[08/05 13:02:21 d2.evaluation.evaluator]: Inference done 1513/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6776 s/iter. Total: 0.8795 s/iter. ETA=0:07:08
+[08/05 13:02:27 d2.evaluation.evaluator]: Inference done 1520/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6769 s/iter. Total: 0.8789 s/iter. ETA=0:07:01
+[08/05 13:02:33 d2.evaluation.evaluator]: Inference done 1526/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6776 s/iter. Total: 0.8796 s/iter. ETA=0:06:56
+[08/05 13:02:38 d2.evaluation.evaluator]: Inference done 1532/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6776 s/iter. Total: 0.8797 s/iter. ETA=0:06:51
+[08/05 13:02:43 d2.evaluation.evaluator]: Inference done 1539/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6768 s/iter. Total: 0.8790 s/iter. ETA=0:06:45
+[08/05 13:02:49 d2.evaluation.evaluator]: Inference done 1546/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6766 s/iter. Total: 0.8787 s/iter. ETA=0:06:38
+[08/05 13:02:55 d2.evaluation.evaluator]: Inference done 1551/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6779 s/iter. Total: 0.8799 s/iter. ETA=0:06:35
+[08/05 13:03:02 d2.evaluation.evaluator]: Inference done 1558/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6783 s/iter. Total: 0.8803 s/iter. ETA=0:06:29
+[08/05 13:03:08 d2.evaluation.evaluator]: Inference done 1566/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6772 s/iter. Total: 0.8793 s/iter. ETA=0:06:21
+[08/05 13:03:13 d2.evaluation.evaluator]: Inference done 1572/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6776 s/iter. Total: 0.8796 s/iter. ETA=0:06:16
+[08/05 13:03:19 d2.evaluation.evaluator]: Inference done 1581/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6760 s/iter. Total: 0.8779 s/iter. ETA=0:06:07
+[08/05 13:03:24 d2.evaluation.evaluator]: Inference done 1588/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6756 s/iter. Total: 0.8775 s/iter. ETA=0:06:01
+[08/05 13:03:30 d2.evaluation.evaluator]: Inference done 1594/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6757 s/iter. Total: 0.8776 s/iter. ETA=0:05:56
+[08/05 13:03:35 d2.evaluation.evaluator]: Inference done 1599/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6764 s/iter. Total: 0.8784 s/iter. ETA=0:05:52
+[08/05 13:03:40 d2.evaluation.evaluator]: Inference done 1603/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6775 s/iter. Total: 0.8795 s/iter. ETA=0:05:49
+[08/05 13:03:46 d2.evaluation.evaluator]: Inference done 1612/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6762 s/iter. Total: 0.8781 s/iter. ETA=0:05:40
+[08/05 13:03:51 d2.evaluation.evaluator]: Inference done 1620/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6750 s/iter. Total: 0.8770 s/iter. ETA=0:05:33
+[08/05 13:03:57 d2.evaluation.evaluator]: Inference done 1625/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6756 s/iter. Total: 0.8776 s/iter. ETA=0:05:29
+[08/05 13:04:02 d2.evaluation.evaluator]: Inference done 1630/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6764 s/iter. Total: 0.8784 s/iter. ETA=0:05:24
+[08/05 13:04:08 d2.evaluation.evaluator]: Inference done 1635/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6770 s/iter. Total: 0.8791 s/iter. ETA=0:05:20
+[08/05 13:04:13 d2.evaluation.evaluator]: Inference done 1640/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6775 s/iter. Total: 0.8796 s/iter. ETA=0:05:16
+[08/05 13:04:19 d2.evaluation.evaluator]: Inference done 1646/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6779 s/iter. Total: 0.8801 s/iter. ETA=0:05:11
+[08/05 13:04:24 d2.evaluation.evaluator]: Inference done 1653/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6774 s/iter. Total: 0.8795 s/iter. ETA=0:05:05
+[08/05 13:04:31 d2.evaluation.evaluator]: Inference done 1661/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6768 s/iter. Total: 0.8789 s/iter. ETA=0:04:57
+[08/05 13:04:36 d2.evaluation.evaluator]: Inference done 1668/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6764 s/iter. Total: 0.8785 s/iter. ETA=0:04:51
+[08/05 13:04:41 d2.evaluation.evaluator]: Inference done 1674/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6764 s/iter. Total: 0.8785 s/iter. ETA=0:04:46
+[08/05 13:04:47 d2.evaluation.evaluator]: Inference done 1681/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6759 s/iter. Total: 0.8780 s/iter. ETA=0:04:40
+[08/05 13:04:52 d2.evaluation.evaluator]: Inference done 1685/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6768 s/iter. Total: 0.8790 s/iter. ETA=0:04:36
+[08/05 13:04:57 d2.evaluation.evaluator]: Inference done 1690/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6773 s/iter. Total: 0.8795 s/iter. ETA=0:04:32
+[08/05 13:05:02 d2.evaluation.evaluator]: Inference done 1696/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6772 s/iter. Total: 0.8794 s/iter. ETA=0:04:27
+[08/05 13:05:08 d2.evaluation.evaluator]: Inference done 1701/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6782 s/iter. Total: 0.8804 s/iter. ETA=0:04:23
+[08/05 13:05:14 d2.evaluation.evaluator]: Inference done 1706/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6787 s/iter. Total: 0.8809 s/iter. ETA=0:04:18
+[08/05 13:05:19 d2.evaluation.evaluator]: Inference done 1711/2000. Dataloading: 0.0026 s/iter. Inference: 0.1996 s/iter. Eval: 0.6790 s/iter. Total: 0.8813 s/iter. ETA=0:04:14
+[08/05 13:05:24 d2.evaluation.evaluator]: Inference done 1717/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6790 s/iter. Total: 0.8812 s/iter. ETA=0:04:09
+[08/05 13:05:30 d2.evaluation.evaluator]: Inference done 1724/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6789 s/iter. Total: 0.8811 s/iter. ETA=0:04:03
+[08/05 13:05:36 d2.evaluation.evaluator]: Inference done 1731/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6788 s/iter. Total: 0.8810 s/iter. ETA=0:03:56
+[08/05 13:05:41 d2.evaluation.evaluator]: Inference done 1736/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6796 s/iter. Total: 0.8817 s/iter. ETA=0:03:52
+[08/05 13:05:47 d2.evaluation.evaluator]: Inference done 1742/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6796 s/iter. Total: 0.8817 s/iter. ETA=0:03:47
+[08/05 13:05:52 d2.evaluation.evaluator]: Inference done 1749/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6790 s/iter. Total: 0.8811 s/iter. ETA=0:03:41
+[08/05 13:05:57 d2.evaluation.evaluator]: Inference done 1754/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6795 s/iter. Total: 0.8816 s/iter. ETA=0:03:36
+[08/05 13:06:02 d2.evaluation.evaluator]: Inference done 1762/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6787 s/iter. Total: 0.8807 s/iter. ETA=0:03:29
+[08/05 13:06:08 d2.evaluation.evaluator]: Inference done 1768/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6786 s/iter. Total: 0.8807 s/iter. ETA=0:03:24
+[08/05 13:06:13 d2.evaluation.evaluator]: Inference done 1773/2000. Dataloading: 0.0026 s/iter. Inference: 0.1995 s/iter. Eval: 0.6790 s/iter. Total: 0.8812 s/iter. ETA=0:03:20
+[08/05 13:06:18 d2.evaluation.evaluator]: Inference done 1778/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6795 s/iter. Total: 0.8817 s/iter. ETA=0:03:15
+[08/05 13:06:25 d2.evaluation.evaluator]: Inference done 1784/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6801 s/iter. Total: 0.8822 s/iter. ETA=0:03:10
+[08/05 13:06:30 d2.evaluation.evaluator]: Inference done 1793/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6791 s/iter. Total: 0.8811 s/iter. ETA=0:03:02
+[08/05 13:06:36 d2.evaluation.evaluator]: Inference done 1802/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6775 s/iter. Total: 0.8796 s/iter. ETA=0:02:54
+[08/05 13:06:41 d2.evaluation.evaluator]: Inference done 1806/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6785 s/iter. Total: 0.8806 s/iter. ETA=0:02:50
+[08/05 13:06:46 d2.evaluation.evaluator]: Inference done 1813/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6780 s/iter. Total: 0.8801 s/iter. ETA=0:02:44
+[08/05 13:06:52 d2.evaluation.evaluator]: Inference done 1820/2000. Dataloading: 0.0026 s/iter. Inference: 0.1994 s/iter. Eval: 0.6778 s/iter. Total: 0.8799 s/iter. ETA=0:02:38
+[08/05 13:06:57 d2.evaluation.evaluator]: Inference done 1825/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6784 s/iter. Total: 0.8804 s/iter. ETA=0:02:34
+[08/05 13:07:02 d2.evaluation.evaluator]: Inference done 1832/2000. Dataloading: 0.0026 s/iter. Inference: 0.1993 s/iter. Eval: 0.6778 s/iter. Total: 0.8798 s/iter. ETA=0:02:27
+[08/05 13:07:08 d2.evaluation.evaluator]: Inference done 1837/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6787 s/iter. Total: 0.8806 s/iter. ETA=0:02:23
+[08/05 13:07:13 d2.evaluation.evaluator]: Inference done 1846/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6771 s/iter. Total: 0.8790 s/iter. ETA=0:02:15
+[08/05 13:07:19 d2.evaluation.evaluator]: Inference done 1853/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6769 s/iter. Total: 0.8787 s/iter. ETA=0:02:09
+[08/05 13:07:25 d2.evaluation.evaluator]: Inference done 1859/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6774 s/iter. Total: 0.8792 s/iter. ETA=0:02:03
+[08/05 13:07:30 d2.evaluation.evaluator]: Inference done 1868/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6759 s/iter. Total: 0.8777 s/iter. ETA=0:01:55
+[08/05 13:07:36 d2.evaluation.evaluator]: Inference done 1877/2000. Dataloading: 0.0026 s/iter. Inference: 0.1992 s/iter. Eval: 0.6746 s/iter. Total: 0.8765 s/iter. ETA=0:01:47
+[08/05 13:07:42 d2.evaluation.evaluator]: Inference done 1883/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6751 s/iter. Total: 0.8770 s/iter. ETA=0:01:42
+[08/05 13:07:47 d2.evaluation.evaluator]: Inference done 1890/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6746 s/iter. Total: 0.8765 s/iter. ETA=0:01:36
+[08/05 13:07:53 d2.evaluation.evaluator]: Inference done 1896/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6747 s/iter. Total: 0.8765 s/iter. ETA=0:01:31
+[08/05 13:07:58 d2.evaluation.evaluator]: Inference done 1904/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6737 s/iter. Total: 0.8755 s/iter. ETA=0:01:24
+[08/05 13:08:03 d2.evaluation.evaluator]: Inference done 1911/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6733 s/iter. Total: 0.8750 s/iter. ETA=0:01:17
+[08/05 13:08:09 d2.evaluation.evaluator]: Inference done 1919/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6728 s/iter. Total: 0.8746 s/iter. ETA=0:01:10
+[08/05 13:08:14 d2.evaluation.evaluator]: Inference done 1925/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6727 s/iter. Total: 0.8745 s/iter. ETA=0:01:05
+[08/05 13:08:20 d2.evaluation.evaluator]: Inference done 1932/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6725 s/iter. Total: 0.8743 s/iter. ETA=0:00:59
+[08/05 13:08:25 d2.evaluation.evaluator]: Inference done 1937/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6729 s/iter. Total: 0.8746 s/iter. ETA=0:00:55
+[08/05 13:08:31 d2.evaluation.evaluator]: Inference done 1945/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6724 s/iter. Total: 0.8741 s/iter. ETA=0:00:48
+[08/05 13:08:36 d2.evaluation.evaluator]: Inference done 1950/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6728 s/iter. Total: 0.8745 s/iter. ETA=0:00:43
+[08/05 13:08:41 d2.evaluation.evaluator]: Inference done 1956/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6728 s/iter. Total: 0.8745 s/iter. ETA=0:00:38
+[08/05 13:08:47 d2.evaluation.evaluator]: Inference done 1963/2000. Dataloading: 0.0026 s/iter. Inference: 0.1990 s/iter. Eval: 0.6724 s/iter. Total: 0.8741 s/iter. ETA=0:00:32
+[08/05 13:08:52 d2.evaluation.evaluator]: Inference done 1968/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6728 s/iter. Total: 0.8746 s/iter. ETA=0:00:27
+[08/05 13:08:59 d2.evaluation.evaluator]: Inference done 1979/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6715 s/iter. Total: 0.8733 s/iter. ETA=0:00:18
+[08/05 13:09:05 d2.evaluation.evaluator]: Inference done 1986/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6713 s/iter. Total: 0.8732 s/iter. ETA=0:00:12
+[08/05 13:09:10 d2.evaluation.evaluator]: Inference done 1992/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6713 s/iter. Total: 0.8732 s/iter. ETA=0:00:06
+[08/05 13:09:17 d2.evaluation.evaluator]: Inference done 1997/2000. Dataloading: 0.0026 s/iter. Inference: 0.1991 s/iter. Eval: 0.6725 s/iter. Total: 0.8743 s/iter. ETA=0:00:02
+[08/05 13:09:18 d2.evaluation.evaluator]: Total inference time: 0:29:03.171910 (0.873770 s / iter per device, on 1 devices)
+[08/05 13:09:18 d2.evaluation.evaluator]: Total inference pure compute time: 0:06:37 (0.199085 s / iter per device, on 1 devices)
+[08/05 13:09:19 d2.evaluation.sem_seg_evaluation]: OrderedDict([('sem_seg', {'mIoU': 70.56760084841804, 'fwIoU': 88.31784054002257, 'IoU-road': 88.4732447344961, 'BoundaryIoU-road': 88.65312906137977, 'min(IoU, B-Iou)-road': 88.4732447344961, 'IoU-sidewalk': 41.45816136943999, 'BoundaryIoU-sidewalk': 30.155982665902464, 'min(IoU, B-Iou)-sidewalk': 30.155982665902464, 'IoU-building': 89.83349647986707, 'BoundaryIoU-building': 67.5340365022315, 'min(IoU, B-Iou)-building': 67.5340365022315, 'IoU-wall': 51.79322347758713, 'BoundaryIoU-wall': 41.991767991048654, 'min(IoU, B-Iou)-wall': 41.991767991048654, 'IoU-fence': 60.93184775531352, 'BoundaryIoU-fence': 29.466340590396, 'min(IoU, B-Iou)-fence': 29.466340590396, 'IoU-pole': 63.34324141002158, 'BoundaryIoU-pole': 56.04561361511753, 'min(IoU, B-Iou)-pole': 56.04561361511753, 'IoU-traffic light': 66.1837875997929, 'BoundaryIoU-traffic light': 54.18501662699883, 'min(IoU, B-Iou)-traffic light': 54.18501662699883, 'IoU-traffic sign': 78.19514829840473, 'BoundaryIoU-traffic sign': 27.48538294741733, 'min(IoU, B-Iou)-traffic sign': 27.48538294741733, 'IoU-vegetation': 89.61945666175882, 'BoundaryIoU-vegetation': 66.15393779907855, 'min(IoU, B-Iou)-vegetation': 66.15393779907855, 'IoU-terrain': 61.849866497309556, 'BoundaryIoU-terrain': 34.73271754411581, 'min(IoU, B-Iou)-terrain': 34.73271754411581, 'IoU-sky': 98.04890242572807, 'BoundaryIoU-sky': 91.37449632906235, 'min(IoU, B-Iou)-sky': 91.37449632906235, 'IoU-person': 80.93447567551124, 'BoundaryIoU-person': 39.29818556838746, 'min(IoU, B-Iou)-person': 39.29818556838746, 'IoU-rider': 72.7149912095872, 'BoundaryIoU-rider': 28.04176319013144, 'min(IoU, B-Iou)-rider': 28.04176319013144, 'IoU-car': 92.6249520201391, 'BoundaryIoU-car': 0.0, 'min(IoU, B-Iou)-car': 0.0, 'IoU-truck': 71.74692368522354, 'BoundaryIoU-truck': 0.0, 'min(IoU, B-Iou)-truck': 0.0, 'IoU-bus': 66.91228623191462, 'BoundaryIoU-bus': 0.0, 'min(IoU, B-Iou)-bus': 0.0, 'IoU-train': 26.358057673274715, 'BoundaryIoU-train': 0.0, 'min(IoU, B-Iou)-train': 0.0, 'IoU-motorcycle': 71.31483649087428, 'BoundaryIoU-motorcycle': 0.0, 'min(IoU, B-Iou)-motorcycle': 0.0, 'IoU-bicycle': 68.44751642369829, 'BoundaryIoU-bicycle': 0.0, 'min(IoU, B-Iou)-bicycle': 0.0, 'mACC': 83.14760451363362, 'pACC': 93.49782990132803, 'ACC-road': 98.10038702970473, 'ACC-sidewalk': 44.81947026681165, 'ACC-building': 95.78874795439461, 'ACC-wall': 67.51750890396936, 'ACC-fence': 68.24409141022791, 'ACC-pole': 72.32972407894978, 'ACC-traffic light': 75.80641639816857, 'ACC-traffic sign': 83.7720305434049, 'ACC-vegetation': 92.85138413505055, 'ACC-terrain': 91.58543905656276, 'ACC-sky': 99.30264534398493, 'ACC-person': 92.29119001522997, 'ACC-rider': 86.84790015465549, 'ACC-car': 96.72611709392757, 'ACC-truck': 87.36170369806638, 'ACC-bus': 75.86099364871619, 'ACC-train': 82.42115851133069, 'ACC-motorcycle': 81.92670907624765, 'ACC-bicycle': 86.25086843963508})])
+[08/05 13:09:19 d2.engine.defaults]: Evaluation results for mapillary_vistas_sem_seg_val in csv format:
+[08/05 13:09:19 d2.evaluation.testing]: copypaste: Task: sem_seg
+[08/05 13:09:19 d2.evaluation.testing]: copypaste: mIoU,fwIoU,mACC,pACC
+[08/05 13:09:19 d2.evaluation.testing]: copypaste: 70.5676,88.3178,83.1476,93.4978

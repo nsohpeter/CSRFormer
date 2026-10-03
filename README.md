@@ -30,7 +30,7 @@ Because the gate scales every channel equally at each pixel, CSR preserves the c
 
 ```
 CSRFormer/
-├── docs/                          # installation, datasets, training & evaluation guides
+├── docs/                          # installation guide and figures
 └── Mask2Former/
     ├── train_net.py               # training / evaluation entry point
     ├── custom_configs/training/   # CSRFormer and baseline configs
@@ -56,7 +56,7 @@ pip install -r requirements.txt
 cd mask2former/modeling/pixel_decoder/ops && sh make.sh && cd -
 ```
 
-**2. Prepare data and pretrained weights.** See [docs/DATASETS.md](docs/DATASETS.md) for the folder layout and label mapping of all five datasets.
+**2. Prepare data and pretrained weights.** Download [Cityscapes](https://www.cityscapes-dataset.com/), [BDD100K](https://bdd-data.berkeley.edu/), [GTA5](https://download.visinf.tu-darmstadt.de/data/from_games/), [Mapillary Vistas v2.0](https://www.mapillary.com/dataset/vistas) and [ACDC](https://acdc.vision.ee.ethz.ch/) from their official sources. All target datasets are mapped to the 19 Cityscapes classes and registered by [`register_custom_datasets.py`](Mask2Former/mask2former/data/datasets/register_custom_datasets.py), where the dataset paths are set. The pretrained Swin-B backbone is described in [docs/INSTALL.md](docs/INSTALL.md#6-pretrained-backbone).
 
 **3. Train on Cityscapes**
 
@@ -76,7 +76,7 @@ python train_net.py \
   DATASETS.TEST '("bdd100k_sem_seg_val",)'
 ```
 
-All evaluation targets, expected runtimes, and multi-run reporting are described in [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md).
+Registered evaluation targets: `bdd100k_sem_seg_val`, `gta5_sem_seg_val`, `mapillary_vistas_sem_seg_val`, `acdc_fog_sem_seg_val`, `acdc_night_sem_seg_val`, `acdc_rain_sem_seg_val`, `acdc_snow_sem_seg_val`, and `acdc_sem_seg_val` (all ACDC conditions). Training takes about 15.5 hours and the GTA5 evaluation about 2 hours on a single RTX 3090.
 
 ## Citation
 
@@ -90,6 +90,12 @@ If you find this work useful, please cite:
   year    = {TODO}
 }
 ```
+
+## Contact
+
+For questions about the paper or code, please open a [GitHub issue](https://github.com/nsohpeter/CSRFormer/issues) or contact:
+
+- **Peter Nsoh**: [Apiahpetertoch@gmail.com](mailto:Apiahpetertoch@gmail.com) (University of Electronic Science and Technology of China)
 
 ## Acknowledgements
 

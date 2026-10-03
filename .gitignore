@@ -48,3 +48,4 @@ events.out.tfevents.*
 
 # Not part of this repo
 /CMFormer/
+/datasets/
